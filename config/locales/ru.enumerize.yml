@@ -1,0 +1,14 @@
+ru:
+  enumerize:
+    temporary_storage_warehouse_transaction:
+      vehicle_type:
+        truck: фура
+        less_15: до 1.5 тонны
+        less_30: до 3 тонн
+      state:
+        checkin: прибыл
+        inprogress: ЗТК
+        chekout: покинул
+      deal_type:
+        import: импорт
+        export: экспорт

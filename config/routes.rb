@@ -10,5 +10,6 @@ Rails.application.routes.draw do
 
   namespace :cabinet do
     resource :user, only: [:show]
+    resources :temporary_storage_warehouse_transactions, only: [:index, :edit, :update, :new, :create]
   end
 end

@@ -1,0 +1,41 @@
+.row
+  .col-md-12
+    h2
+      = link_to 'Создать ТС', new_cabinet_temporary_storage_warehouse_transaction_path, class: 'btn btn-success pull-right'
+      span.pull-left
+        | Склад временного хранения
+hr
+table.table
+  thead
+    tr
+      th= '#'
+      th= 'Состояние А/М'
+      th style="width: 130px;"= 'Дата'
+      th= 'Контрагент'
+      th= 'Гос Номер'
+      th= 'Выставлен'
+      th= 'Уведомлене заезда'
+      th= 'Уведомлене выезда'
+      th= 'Вид сделки'
+      th style="width: 170px;"= 'Страна'
+      th style="width: 100px;"= 'Тип ТС'
+  tbody
+    - @collection.each do |resource|
+      tr onClick="location.href='#{edit_cabinet_temporary_storage_warehouse_transaction_path(resource)}'" style="cursor:pointer"
+        td= resource.id
+        td= resource.state_text
+        td= l resource.date
+        td
+        td= resource.vehicle_number
+        td
+          - if [true, false].sample
+            i.fa.fa-check style="color: green"
+        td
+          - if resource.checkin_notified
+            i.fa.fa-check style="color: green"
+        td
+          - if resource.checkout_notified
+            i.fa.fa-check style="color: green"
+        td= resource.deal_type_text
+        td= resource.country_name
+        td= resource.vehicle_type_text

@@ -6,4 +6,10 @@ class User < ApplicationRecord
   enumerize :role, in: [:user, :admin], default: :user
 
   validates :email, presence: true, uniqueness: true
+
+  belongs_to :temporary_storage_warehouse, optional: true
+
+  def to_s
+    email
+  end
 end

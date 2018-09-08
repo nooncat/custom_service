@@ -1,4 +1,22 @@
 ru:
+  time:
+    formats:
+      default: "%d.%m.%Y %H:%M"
   activerecord:
+    attributes:
+      temporary_storage_warehouse_transaction:
+        vehicle_number: Номер ТС
+        vehicle_type: Тип ТС
+        state: Состояние
+        pallet_count: Количество палет
+        date: Дата
+        checkin_date: Время въезда
+        checkout_date: Время выезда
+        checkin_notified: Уведомление о заезде
+        checkout_notified: Уведомление о выезде
+        driver_fullname: Водитель
+        phone: Телефон
+        deal_type: Тип сделки
+        country_code: Страна
     messages:
       confirmation: "Подтверждени не совпадает с оригиналом"

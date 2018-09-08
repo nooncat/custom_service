@@ -1,0 +1,23 @@
+= simple_form_for [:cabinet, @resource] do |f|
+  .row
+    .col-md-6
+      = f.input :driver_fullname
+      = f.input :vehicle_number
+      = f.input :vehicle_type
+      = f.input :state
+      = f.input :pallet_count
+      = f.input :date
+    .col-md-6
+      = f.input :checkin_date
+      = f.input :checkin_notified
+      = f.input :checkout_date
+      = f.input :checkout_notified
+      = f.input :phone
+      = f.input :deal_type
+      = f.input :country_code, collection: country_collection
+  hr
+
+  .row
+    .col-md-12
+      = link_to 'Назад', cabinet_temporary_storage_warehouse_transactions_path, class: 'btn btn-primary pull-left'
+      = f.submit 'Сохранить', class: 'btn btn-success pull-right'
