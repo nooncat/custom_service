@@ -1,0 +1,26 @@
+- errors = @user.errors.messages
+.login-form-1
+  form id="register-form" class="text-left" action=session_path method="POST"
+    input type="hidden" name="authenticity_token" value=form_authenticity_token
+    .login-form-main-message
+    .main-login-form
+      .login-group
+        .form-group class="#{errors[:email].present? ? 'invalid' : ''}"
+          label for="user_email" class="sr-onlyEmail"
+          input type="text" class="form-control" id="user_email" name="user[email]" placeholder="Email" value=@user.email
+        - if errors[:email]
+          span.error= errors[:email].first
+
+        .form-group class="#{errors[:password].present? ? 'invalid' : ''}"
+          label for="user_password" class="sr-onlyPassword"
+          input type="password" class="form-control" id="user_password" name="user[password]" placeholder="Пароль" value=@user.password
+        - if errors[:email]
+          span.error= errors[:password].first
+
+      button type="submit" class="login-button"
+        i.fa.fa-chevron-right
+    .etc-login-form
+      p
+        | Уже есть аккаунт?
+        a href="#login"
+          = ' Авторизоваться'

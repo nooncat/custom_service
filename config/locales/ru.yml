@@ -1,0 +1,4 @@
+ru:
+  activerecord:
+    messages:
+      confirmation: "Подтверждени не совпадает с оригиналом"
