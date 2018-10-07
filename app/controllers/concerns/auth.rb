@@ -22,10 +22,15 @@ module Auth
   def authenticate
     return true if current_user
 
-    logout
+    reset_session
 
     redirect_to(:new_session)
 
     false
+  end
+
+  def authorize
+    p "Authorizable:#{resource_class.to_s}".constantize
+    true
   end
 end

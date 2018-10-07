@@ -10,7 +10,8 @@ end
 User.delete_all
 
 users = [
-  {email: 'uln1@test.home', password: '123', password_confirmation: '123', temporary_storage_warehouse_id: storages.find{ |e| e.region_num == 73 }.id}
+  {email: 'uln1@test.home', role: :user, password: '123', password_confirmation: '123', temporary_storage_warehouse_id: storages.find{ |e| e.region_num == 73 }.id},
+  {email: 'admin1@test.home', role: :admin, password: '123', password_confirmation: '123'}
 ].each do |e|
   User.create!(e)
 end

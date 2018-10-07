@@ -3,9 +3,7 @@
 one:
   region_name: MyString
   address: MyString
-  user: one
 
 two:
   region_name: MyString
   address: MyString
-  user: two

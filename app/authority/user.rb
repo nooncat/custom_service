@@ -1,0 +1,2 @@
+module Authority::User
+end
