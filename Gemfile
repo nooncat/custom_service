@@ -41,7 +41,7 @@ group :development do
   gem 'capistrano-rvm'
   gem 'capistrano-bundler', '~> 1.2'
   gem 'capistrano3-puma'
-  gem 'capistrano-sidekiq'
+  # gem 'capistrano-sidekiq'
   gem 'pry-rails'
   gem 'letter_opener'
 end
