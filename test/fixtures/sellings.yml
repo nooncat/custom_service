@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  temporary_storage_warehouse_transaction: one
+  description: MyText
+  quantity: 1
+  measure: MyString
+  price: 1.5
+  nds_percent: 1
+  nds_total: 1.5
+
+two:
+  temporary_storage_warehouse_transaction: two
+  description: MyText
+  quantity: 1
+  measure: MyString
+  price: 1.5
+  nds_percent: 1
+  nds_total: 1.5

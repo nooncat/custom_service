@@ -4,6 +4,25 @@ lock "~> 3.11.0"
 set :application, "my_app_name"
 set :repo_url, "git@example.com:me/my_repo.git"
 
+
+set :application, "customs_service"
+set :repo_url, "m_seliverstov@bitbucket.org:m_seliverstov/customs_service.git"
+set :scm, :git
+set :scm_verbose, true
+set :stages, %w(staging production)
+set :default_stage, 'staging'
+set :keep_releases, 5
+set :ssh_options, { forward_agent: true }
+set :rvm_ruby_version, '2.3.1'
+set :rvm_type, :user
+set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
+append :linked_files, 'config/database.yml', 'config/secrets.yml', 'config/application.yml'
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system', 'public/uploads'
+after 'deploy:finished', 'runit:puma:restart'
+
+
+
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 

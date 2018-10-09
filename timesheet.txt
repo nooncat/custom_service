@@ -1,0 +1,2 @@
+8 - initial, total: 8
+2 - CRUD счетов, total: 10

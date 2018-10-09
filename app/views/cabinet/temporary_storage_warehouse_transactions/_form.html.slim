@@ -6,15 +6,21 @@
       = f.input :vehicle_type
       = f.input :state
       = f.input :pallet_count
-      = f.input :date
+      = f.input :date, as: :date, html5: true
     .col-md-6
-      = f.input :checkin_date
+      = f.input :checkin_date, as: :date, html5: true
       = f.input :checkin_notified
-      = f.input :checkout_date
+      = f.input :checkout_date, as: :date, html5: true
       = f.input :checkout_notified
       = f.input :phone
       = f.input :deal_type
       = f.input :country_code, collection: country_collection
+
+  - if @resource.persisted?
+    .row
+      .col-md-12
+        = link_to 'К списку реализаций', [:cabinet, @resource, :sellings], class: 'btn btn-default pull-right'
+
   hr
 
   .row

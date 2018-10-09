@@ -10,7 +10,11 @@ Rails.application.routes.draw do
 
   namespace :cabinet do
     resource :user, only: [:show]
-    resources :temporary_storage_warehouse_transactions, only: [:index, :edit, :update, :new, :create]
+    resources :temporary_storage_warehouse_transactions, only: [:index, :edit, :update, :new, :create] do
+      scope module: :temporary_storage_warehouse_transactions do
+        resources :sellings, only: [:index, :edit, :update, :new, :create, :destroy]
+      end
+    end
   end
 
   namespace :admin do

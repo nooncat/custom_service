@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_08_192403) do
+ActiveRecord::Schema.define(version: 2018_10_07_122042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "sellings", force: :cascade do |t|
+    t.bigint "temporary_storage_warehouse_transaction_id"
+    t.text "description"
+    t.integer "quantity"
+    t.string "measure"
+    t.float "price"
+    t.integer "nds_percent"
+    t.float "nds_total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["temporary_storage_warehouse_transaction_id"], name: "index_sellings_on_temporary_storage_warehouse_transaction_id"
+  end
 
   create_table "temporary_storage_warehouse_transactions", force: :cascade do |t|
     t.string "vehicle_number"
@@ -51,5 +64,6 @@ ActiveRecord::Schema.define(version: 2018_09_08_192403) do
     t.index ["temporary_storage_warehouse_id"], name: "index_users_on_temporary_storage_warehouse_id"
   end
 
+  add_foreign_key "sellings", "temporary_storage_warehouse_transactions"
   add_foreign_key "users", "temporary_storage_warehouses"
 end

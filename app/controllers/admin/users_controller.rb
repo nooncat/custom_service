@@ -1,6 +1,4 @@
 class Admin::UsersController < Admin::ApplicationController
-  before_action :authorize
-
   def index; end
 
   def resource_class

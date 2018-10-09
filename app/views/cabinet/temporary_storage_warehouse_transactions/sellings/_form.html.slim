@@ -1,0 +1,15 @@
+= simple_form_for [:cabinet, :temporary_storage_warehouse_transaction, @selling] do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    / = f.association :temporary_storage_warehouse_transaction
+    = f.input :description
+    = f.input :quantity
+    = f.input :measure
+    = f.input :price
+    = f.input :nds_percent
+    / = f.input :nds_total
+
+  .form-actions
+    = f.button :submit

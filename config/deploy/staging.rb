@@ -1,3 +1,10 @@
+server '92.53.91.47', user: 'deployer', roles: %w{app web db}
+set :deploy_to, '/home/deployer/customs_service/'
+set :user, 'deployer'
+set :port, 22
+set :rails_env, 'staging'
+set :branch, ENV['branch'] || 'master'
+
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.

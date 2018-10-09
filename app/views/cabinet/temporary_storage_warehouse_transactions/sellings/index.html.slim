@@ -1,0 +1,37 @@
+.row
+  .col-md-12
+    h2
+      = link_to 'Создать реализацию', new_cabinet_temporary_storage_warehouse_transaction_selling_path, class: 'btn btn-success pull-right'
+      = link_to 'Назад', [:edit, :cabinet, @parent], class: 'btn btn-primary pull-right mr-10'
+      span.pull-left
+        | Реализации для ТС:
+.row
+  .col-md-12
+    = @parent
+
+table.table
+  thead
+    tr
+      th ID
+      th Description
+      th Quantity
+      th Measure
+      th Price
+      th Nds percent
+      th Nds total
+      th
+      th
+      th
+
+  tbody
+    - @sellings.each do |selling|
+      tr
+        td = selling.id
+        td = selling.description
+        td = selling.quantity
+        td = selling.measure
+        td = selling.price
+        td = selling.nds_percent
+        td = selling.nds_total
+        td = link_to 'Edit', [:edit, :cabinet, selling.temporary_storage_warehouse_transaction, selling]
+        td = link_to 'Destroy', [:cabinet, selling.temporary_storage_warehouse_transaction, selling], data: { confirm: 'Are you sure?' }, method: :delete
