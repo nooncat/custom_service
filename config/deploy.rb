@@ -13,7 +13,7 @@ set :stages, %w(staging production)
 set :default_stage, 'staging'
 set :keep_releases, 5
 set :ssh_options, { forward_agent: true }
-set :rvm_ruby_version, '2.3.1'
+set :rvm_ruby_version, '2.5.0'
 set :rvm_type, :user
 set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
 append :linked_files, 'config/database.yml', 'config/secrets.yml', 'config/application.yml'
