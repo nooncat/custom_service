@@ -16,11 +16,37 @@ users = [
   User.create!(e)
 end
 
+Company.delete_all
+
+company_names = ['OOO Гранд', 'ОАО Бридж стоун', 'ИП Белов', 'ООО Самара строй', 'ОАО РЖД', 'ОАО Инвест строй', 'ОАО УАЗ', 'ОАО ТАЗ', 'ОАО Камаз', 'ООО Автозапчасть']
+(1..10).map { |i|
+  {
+    name: company_names[i],
+    ogrn: 8.times.map{ |e| rand(0..9) }.join(''),
+    inn: 8.times.map{ |e| rand(0..9) }.join(''),
+    kpp: 8.times.map{ |e| rand(0..9) }.join(''),
+    uridicheskiy_address: 'г.Москва. ул. Пушкина, д.101, оф 101',
+    real_address: 'г.Москва. ул. Пушкина, д.101, оф 101',
+    bank_schet: 8.times.map{ |e| rand(0..9) }.join(''),
+    bank_name: 'ПАО БИНБАНК',
+    bank_bik: 8.times.map{ |e| rand(0..9) }.join(''),
+    bank_city: 'Москва',
+    bank_kor_schet: 8.times.map{ |e| rand(0..9) }.join(''),
+    phone:  "+#{79001001010+i}",
+    email: "compnay_#{i}@test.home"
+  }
+}.each do |e|
+  Company.create!(e)
+end
+
+companies = Company.all
+
 TemporaryStorageWarehouseTransaction.delete_all
 
 letters = %w[A B C E O P T]
 (1..100).map { |i|
   {
+    company: companies.sample,
     vehicle_number: "#{letters.sample}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{letters.sample}#{letters.sample}.73",
     vehicle_type: TemporaryStorageWarehouseTransaction.vehicle_type.values.sample,
     state: TemporaryStorageWarehouseTransaction.state.values.sample,

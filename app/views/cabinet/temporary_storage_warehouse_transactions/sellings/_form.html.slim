@@ -3,13 +3,20 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
-    / = f.association :temporary_storage_warehouse_transaction
-    = f.input :description
-    = f.input :quantity
-    = f.input :measure
-    = f.input :price
-    = f.input :nds_percent
-    / = f.input :nds_total
+    .row
+      .col-md-12
+        = f.input :description
+    .row
+      .col-md-6
+        = f.input :quantity
+        = f.input :measure
+      .col-md-6
+        = f.input :price
+        = f.input :nds_percent
 
-  .form-actions
-    = f.button :submit
+  hr
+
+  .row
+    .col-md-12
+      = link_to 'Назад', cabinet_temporary_storage_warehouse_transaction_sellings_path, class: 'btn btn-primary pull-left'
+      = f.submit 'Создать реализацию', class: 'btn btn-success pull-right'

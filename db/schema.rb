@@ -15,6 +15,24 @@ ActiveRecord::Schema.define(version: 2018_10_07_122042) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "ogrn"
+    t.string "inn"
+    t.string "kpp"
+    t.string "uridicheskiy_address"
+    t.string "real_address"
+    t.string "bank_schet"
+    t.string "bank_name"
+    t.string "bank_bik"
+    t.string "bank_city"
+    t.string "bank_kor_schet"
+    t.string "phone"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sellings", force: :cascade do |t|
     t.bigint "temporary_storage_warehouse_transaction_id"
     t.text "description"
@@ -42,8 +60,10 @@ ActiveRecord::Schema.define(version: 2018_10_07_122042) do
     t.string "phone"
     t.string "deal_type"
     t.string "country_code"
+    t.bigint "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_temporary_storage_warehouse_transactions_on_company_id"
   end
 
   create_table "temporary_storage_warehouses", force: :cascade do |t|
@@ -65,5 +85,6 @@ ActiveRecord::Schema.define(version: 2018_10_07_122042) do
   end
 
   add_foreign_key "sellings", "temporary_storage_warehouse_transactions"
+  add_foreign_key "temporary_storage_warehouse_transactions", "companies"
   add_foreign_key "users", "temporary_storage_warehouses"
 end

@@ -7,6 +7,7 @@ class TemporaryStorageWarehouseTransaction < ApplicationRecord
 
   AVAILABLE_COUNTRIES = [:nl, :lu, :sm, :mk, :tr, :ua, :ch, :fo, :gi, :is, :ee, :lt, :rs, :ad, :hu, :be, :pt, :gb, :im, :sk, :hr, :cz, :it, :fi, :va, :ru, :pl, :mt, :de, :sj, :si, :ax, :ro, :bg, :je, :at, :se, :mc, :dk, :fr, :al, :li, :md, :ie, :es, :ba, :gr, :gg, :by, :lv, :no, :me].freeze
 
+  belongs_to :company
   has_many :sellings
 
   def country # NOTICE: may be move to helpers

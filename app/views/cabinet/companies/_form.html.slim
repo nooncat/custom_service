@@ -1,0 +1,28 @@
+= simple_form_for [:cabinet, @company] do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    .row
+      .col-md-6
+        = f.input :name
+        = f.input :phone
+        = f.input :ogrn
+        = f.input :inn
+        = f.input :kpp
+        = f.input :uridicheskiy_address
+        = f.input :real_address
+      .col-md-6
+        = f.input :email
+        = f.input :bank_name
+        = f.input :bank_bik
+        = f.input :bank_city
+        = f.input :bank_kor_schet
+        = f.input :bank_schet
+
+  hr
+
+  .row
+    .col-md-12
+      = link_to 'Назад', cabinet_companies_path, class: 'btn btn-primary pull-left'
+      = f.submit 'Создать контрагента', class: 'btn btn-success pull-right'

@@ -1,0 +1,30 @@
+.row
+  .col-md-12
+    h2
+      = link_to 'Создать контрагента', new_cabinet_company_path, class: 'btn btn-success pull-right'
+      span.pull-left
+        | Контрагенты
+
+table.table
+  thead
+    tr
+      th ID
+      th ОГРН
+      th ИНН
+      th КПП
+      th Юридический адрес
+      th Телефон
+      th Email
+
+  tbody
+    - @companies.each do |company|
+      tr onClick="location.href='#{edit_cabinet_company_path(company)}'" style="cursor:pointer"
+        td = company.id
+        td = company.ogrn
+        td = company.inn
+        td = company.kpp
+        td = company.uridicheskiy_address
+        td = company.phone
+        td = company.email
+
+br

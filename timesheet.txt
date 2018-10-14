@@ -1,2 +1,4 @@
 8 - initial, total: 8
 2 - CRUD счетов, total: 10
+4 - Настройка деплоя, устранение проблем с runit, nginx, reg.ru total: 14
+21:32

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
         resources :sellings, only: [:index, :edit, :update, :new, :create, :destroy]
       end
     end
+    resources :companies
   end
 
   namespace :admin do

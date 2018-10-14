@@ -9,14 +9,32 @@ ru:
         vehicle_type: Тип ТС
         state: Состояние
         pallet_count: Количество палет
-        date: Дата
+        date: Время записи
         checkin_date: Время въезда
         checkout_date: Время выезда
         checkin_notified: Уведомление о заезде
         checkout_notified: Уведомление о выезде
         driver_fullname: Водитель
-        phone: Телефон
+        phone: Телефон водителя
         deal_type: Тип сделки
         country_code: Страна
+      company:
+        phone: Телефон
+        ogrn: ОГРН
+        inn: ИНН
+        kpp: КПП
+        uridicheskiy_address: Юридический адрес
+        real_address: Физический адрес
+        bank_name: Название банка
+        bank_bik: Бик
+        bank_city: Город банка
+        bank_kor_schet: Кор. счет
+        bank_schet: Счет
+      selling:
+        description: Описание
+        quantity: Количество
+        measure: Единица измерения
+        price: Цна за еденицу
+        nds_percent: НДС
     messages:
       confirmation: "Подтверждени не совпадает с оригиналом"

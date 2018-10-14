@@ -1,6 +1,7 @@
 = simple_form_for [:cabinet, @resource] do |f|
   .row
     .col-md-6
+      = f.association :company
       = f.input :driver_fullname
       = f.input :vehicle_number
       = f.input :vehicle_type
