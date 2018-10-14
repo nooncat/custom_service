@@ -3,6 +3,12 @@ ru:
     formats:
       default: "%d.%m.%Y %H:%M"
   activerecord:
+    errors:
+      models:
+        temporary_storage_warehouse_transaction:
+          attributes:
+            company:
+              required: 'обязателен для заполнения'
     attributes:
       user:
         email: Email пользователя
@@ -21,6 +27,7 @@ ru:
         bank_kor_schet: Кор. счет
         bank_schet: Счет
       temporary_storage_warehouse_transaction:
+        company: Контрагент
         vehicle_number: Номер ТС
         vehicle_type: Тип ТС
         state: Состояние

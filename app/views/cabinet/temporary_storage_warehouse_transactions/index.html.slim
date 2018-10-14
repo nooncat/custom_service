@@ -24,7 +24,7 @@ table.table
       tr onClick="location.href='#{edit_cabinet_temporary_storage_warehouse_transaction_path(resource)}'" style="cursor:pointer"
         td= resource.id
         td= resource.state_text
-        td= l resource.date
+        td= resource.date ? l(resource.date) : 'не установлено'
         td
         td= resource.vehicle_number
         td
