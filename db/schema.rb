@@ -68,8 +68,19 @@ ActiveRecord::Schema.define(version: 2018_10_07_122042) do
 
   create_table "temporary_storage_warehouses", force: :cascade do |t|
     t.string "region_name"
-    t.string "address"
     t.integer "region_num"
+    t.string "ogrn"
+    t.string "inn"
+    t.string "kpp"
+    t.string "uridicheskiy_address"
+    t.string "real_address"
+    t.string "bank_schet"
+    t.string "bank_name"
+    t.string "bank_bik"
+    t.string "bank_city"
+    t.string "bank_kor_schet"
+    t.string "phone"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

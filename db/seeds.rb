@@ -1,7 +1,22 @@
 TemporaryStorageWarehouse.delete_all
 
 storages = [
-  {region_num: 73, region_name: 'Ульяновская обл.', address: ''}
+  {
+    region_num: 73,
+    region_name: 'Ульяновская обл.',
+    ogrn: 8.times.map{ |e| rand(0..9) }.join(''),
+    inn: 8.times.map{ |e| rand(0..9) }.join(''),
+    kpp: 8.times.map{ |e| rand(0..9) }.join(''),
+    uridicheskiy_address: 'г.Москва. ул. Пушкина, д.101, оф 101',
+    real_address: 'г.Москва. ул. Пушкина, д.101, оф 101',
+    bank_schet: 8.times.map{ |e| rand(0..9) }.join(''),
+    bank_name: 'ПАО БИНБАНК',
+    bank_bik: 8.times.map{ |e| rand(0..9) }.join(''),
+    bank_city: 'Москва',
+    bank_kor_schet: 8.times.map{ |e| rand(0..9) }.join(''),
+    phone:  "+#{79001001010}",
+    email: "svh@test.home"
+  }
 ].map do |e|
   TemporaryStorageWarehouse.create!(e)
 end

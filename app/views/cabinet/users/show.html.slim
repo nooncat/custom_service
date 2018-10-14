@@ -1,1 +1,60 @@
-= render partial: 'form'
+.row
+  .col-md-12
+    h2= @user.email
+
+
+- @warehouse = @user.temporary_storage_warehouse
+- if @warehouse
+  .row
+    .col-md-12
+      h3
+        span.pull-right Данные СВХ
+  hr
+  .row
+    .col-md-6
+      dl.dl-horizontal
+        dt= han(@warehouse, :region_num)
+        dd= @warehouse.region_num
+
+        dt= han(@warehouse, :ogrn)
+        dd= @warehouse.ogrn
+
+        dt= han(@warehouse, :inn)
+        dd= @warehouse.inn
+
+        dt= han(@warehouse, :kpp)
+        dd= @warehouse.kpp
+
+        dt= han(@warehouse, :uridicheskiy_address)
+        dd= @warehouse.uridicheskiy_address
+
+        dt= han(@warehouse, :real_address)
+        dd= @warehouse.real_address
+    .col-md-6
+      dl.dl-horizontal
+        dt= han(@warehouse, :phone)
+        dd= @warehouse.phone
+
+        dt= han(@warehouse, :email)
+        dd= @warehouse.email
+
+        dt= han(@warehouse, :bank_schet)
+        dd= @warehouse.bank_schet
+
+        dt= han(@warehouse, :bank_name)
+        dd= @warehouse.bank_name
+
+        dt= han(@warehouse, :bank_bik)
+        dd= @warehouse.bank_bik
+
+        dt= han(@warehouse, :bank_city)
+        dd= @warehouse.bank_city
+
+        dt= han(@warehouse, :bank_kor_schet)
+        dd= @warehouse.bank_kor_schet
+
+
+
+
+
+

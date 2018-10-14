@@ -4,6 +4,22 @@ ru:
       default: "%d.%m.%Y %H:%M"
   activerecord:
     attributes:
+      user:
+        email: Email пользователя
+      temporary_storage_warehouse:
+        email: Email СВХ
+        region_num: Номер региона
+        phone: Телефон СВХ
+        ogrn: ОГРН
+        inn: ИНН
+        kpp: КПП
+        uridicheskiy_address: Юридический адрес
+        real_address: Физический адрес
+        bank_name: Название банка
+        bank_bik: Бик
+        bank_city: Город банка
+        bank_kor_schet: Кор. счет
+        bank_schet: Счет
       temporary_storage_warehouse_transaction:
         vehicle_number: Номер ТС
         vehicle_type: Тип ТС
