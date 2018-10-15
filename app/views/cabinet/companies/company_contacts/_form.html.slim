@@ -1,0 +1,20 @@
+= simple_form_for [:cabinet, @company, @resource] do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    .row
+      .col-md-6
+        = f.input :name
+        = f.input :middlename
+        = f.input :email
+      .col-md-6
+        = f.input :lastname
+        = f.input :phone
+
+  hr
+
+  .row
+    .col-md-12
+      = link_to 'Назад', [:edit, :cabinet, @company], class: 'btn btn-primary pull-left'
+      = f.submit 'Сохранить', class: 'btn btn-success pull-right'

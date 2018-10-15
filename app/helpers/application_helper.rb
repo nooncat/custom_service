@@ -6,6 +6,7 @@ module ApplicationHelper
   end
 
   def han(obj, name)
-    obj.class.human_attribute_name(name)
+    return obj.class.human_attribute_name(name) if obj.class.respond_to? :human_attribute_name
+    obj.human_attribute_name(name)
   end
 end

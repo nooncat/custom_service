@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_07_122042) do
+ActiveRecord::Schema.define(version: 2018_10_15_064941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,18 @@ ActiveRecord::Schema.define(version: 2018_10_07_122042) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "company_contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "middlename"
+    t.string "lastname"
+    t.string "phone"
+    t.string "email"
+    t.bigint "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_contacts_on_company_id"
   end
 
   create_table "sellings", force: :cascade do |t|
@@ -95,6 +107,7 @@ ActiveRecord::Schema.define(version: 2018_10_07_122042) do
     t.index ["temporary_storage_warehouse_id"], name: "index_users_on_temporary_storage_warehouse_id"
   end
 
+  add_foreign_key "company_contacts", "companies"
   add_foreign_key "sellings", "temporary_storage_warehouse_transactions"
   add_foreign_key "temporary_storage_warehouse_transactions", "companies"
   add_foreign_key "users", "temporary_storage_warehouses"

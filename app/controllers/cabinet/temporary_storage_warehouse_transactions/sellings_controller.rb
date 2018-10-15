@@ -17,7 +17,7 @@ class Cabinet::TemporaryStorageWarehouseTransactions::SellingsController < Cabin
     @selling = Selling.new(selling_params)
 
     if @selling.save
-      redirect_to [:cabinet, @parent, :sellings], notice: 'Selling was successfully created.'
+      redirect_to [:cabinet, @parent, :sellings], notice: 'Реализация создана.'
     else
       render :new
     end
@@ -25,7 +25,7 @@ class Cabinet::TemporaryStorageWarehouseTransactions::SellingsController < Cabin
 
   def update
     if @selling.update(selling_params)
-      redirect_to [:cabinet, @parent, :sellings], notice: 'Selling was successfully updated.'
+      redirect_to [:cabinet, @parent, :sellings], notice: 'Реализация обновлена.'
     else
       render :edit
     end
@@ -33,7 +33,7 @@ class Cabinet::TemporaryStorageWarehouseTransactions::SellingsController < Cabin
 
   def destroy
     @selling.destroy
-    redirect_to [:cabinet, @parent, :sellings], notice: 'Selling was successfully destroyed.'
+    redirect_to [:cabinet, @parent, :sellings], notice: 'Реализация удалена.'
   end
 
   private

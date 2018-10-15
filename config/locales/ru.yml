@@ -53,6 +53,12 @@ ru:
         bank_city: Город банка
         bank_kor_schet: Кор. счет
         bank_schet: Счет
+      company_contact:
+        name: Имя
+        middlename: Отчество
+        lastname: Фамилия
+        email: Email
+        phone: Телефон
       selling:
         description: Описание
         quantity: Количество

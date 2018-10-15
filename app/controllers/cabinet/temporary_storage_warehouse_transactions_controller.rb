@@ -11,7 +11,7 @@ class Cabinet::TemporaryStorageWarehouseTransactionsController < Cabinet::Applic
     @resource = TemporaryStorageWarehouseTransaction.new(permitted_params)
 
     if @resource.save
-      redirect_to [:cabinet, :temporary_storage_warehouse_transactions], notice: 'Транспортное средство создано'
+      redirect_to [:cabinet, :temporary_storage_warehouse_transactions], notice: 'Транспортное средство создано.'
     else
       render :new
     end

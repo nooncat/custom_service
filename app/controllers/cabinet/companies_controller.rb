@@ -20,7 +20,7 @@ class Cabinet::CompaniesController < Cabinet::ApplicationController
     @company = Company.new(company_params)
 
     if @company.save
-      redirect_to [:cabinet, :companies], notice: 'Company was successfully created.'
+      redirect_to [:cabinet, :companies], notice: 'Контрагент создан.'
     else
       render :new
     end
@@ -29,7 +29,7 @@ class Cabinet::CompaniesController < Cabinet::ApplicationController
   # PATCH/PUT /companies/1
   def update
     if @company.update(company_params)
-      redirect_to [:edit, :cabinet, @company], notice: 'Company was successfully updated.'
+      redirect_to [:edit, :cabinet, @company], notice: 'Контрагент обновлен.'
     else
       render :edit
     end
@@ -38,17 +38,16 @@ class Cabinet::CompaniesController < Cabinet::ApplicationController
   # DELETE /companies/1
   def destroy
     @company.destroy
-    redirect_to [:cabinet, :companies], notice: 'Company was successfully destroyed.'
+    redirect_to [:cabinet, :companies], notice: 'Контрагент удален.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_company
-      @company = Company.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def company_params
-      params.require(:company).permit(:ogrn, :inn, :kpp, :uridicheskiy_address, :real_address, :bank_schet, :bank_name, :bank_bik, :bank_city, :bank_kor_schet, :phone, :email, :users_id)
-    end
+  def set_company
+    @company = Company.find(params[:id])
+  end
+
+  def company_params
+    params.require(:company).permit(:ogrn, :inn, :kpp, :uridicheskiy_address, :real_address, :bank_schet, :bank_name, :bank_bik, :bank_city, :bank_kor_schet, :phone, :email, :users_id)
+  end
 end
