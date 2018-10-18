@@ -48,7 +48,8 @@ class Cabinet::TemporaryStorageWarehouseTransactions::NotificationsController < 
     {
       recpient: 'gordeev.vladislav@si-market.ru; makarova.anastasia@si-market.ru',
       subject: @notification_type == :arrival_notice ? 'Уведомление о заезде' : 'Уведомление о выезде',
-      body: 'Уважаемый партнер, в Ваш адрес прибыло ТС е513кс21, водитель Алипов Александр телефон +7-937-555-5555, С уважением, Сотрудник СВХ, Юрий Масяев'
+      body: @notification_type == :arrival_notice ? 'Уважаемый партнер, в Ваш адрес прибыло ТС е513кс21, водитель Алипов Александр телефон +7-937-555-5555, С уважением, Сотрудник СВХ, Юрий Масяев' :
+        'Уважаемый партнер, в Ваш адрес убыло ТС е513кс21, водитель Алипов Александр телефон +7-937-555-5555, С уважением, Сотрудник СВХ, Юрий Масяев'
     }
   end
 
