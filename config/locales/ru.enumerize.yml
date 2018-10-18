@@ -2,7 +2,7 @@ ru:
   enumerize:
     temporary_storage_warehouse_transaction:
       vehicle_type:
-        truck: фура
+        truck: еврофура
         less_15: до 1.5 тонны
         less_30: до 3 тонн
       state:

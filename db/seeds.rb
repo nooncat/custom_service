@@ -2,20 +2,22 @@ TemporaryStorageWarehouse.delete_all
 
 storages = [
   {
+    name: 'Общество с ограниченной ответственностью «Вавс»',
+    director: 'Нестеров Николай Николаевич',
     region_num: 73,
     region_name: 'Ульяновская обл.',
-    ogrn: 8.times.map{ |e| rand(0..9) }.join(''),
-    inn: 8.times.map{ |e| rand(0..9) }.join(''),
-    kpp: 8.times.map{ |e| rand(0..9) }.join(''),
-    uridicheskiy_address: 'г.Москва. ул. Пушкина, д.101, оф 101',
-    real_address: 'г.Москва. ул. Пушкина, д.101, оф 101',
-    bank_schet: 8.times.map{ |e| rand(0..9) }.join(''),
-    bank_name: 'ПАО БИНБАНК',
-    bank_bik: 8.times.map{ |e| rand(0..9) }.join(''),
+    ogrn: '1177325000467',
+    inn: '7328092118',
+    kpp: '732801001',
+    uridicheskiy_address: 'Российская Федерация, 432072, Ульяновская область, г. Ульяновск, Заволжский район, 1-й пр. Инженерный, 17',
+    real_address: 'Российская Федерация, 432072, Ульяновская область, г. Ульяновск, Заволжский район, 1-й пр. Инженерный, 17',
+    bank_schet: '40702810402500003010',
+    bank_name: 'ТОЧКА ПАО БАНКА «ФК ОТКРЫТИЕ»',
+    bank_bik: '044525999',
     bank_city: 'Москва',
-    bank_kor_schet: 8.times.map{ |e| rand(0..9) }.join(''),
-    phone:  "+#{79001001010}",
-    email: "svh@test.home"
+    bank_kor_schet: '30101810845250000999',
+    phone:  "+7 8422 75-11-55",
+    email: "tlt@vavs-org.ru"
   }
 ].map do |e|
   TemporaryStorageWarehouse.create!(e)
@@ -24,9 +26,27 @@ end
 
 User.delete_all
 
+ul_storage = TemporaryStorageWarehouse.find_by(region_num: 73)
 users = [
-  {email: 'uln1@test.home', role: :user, password: '123', password_confirmation: '123', temporary_storage_warehouse_id: storages.find{ |e| e.region_num == 73 }.id},
-  {email: 'admin1@test.home', role: :admin, password: '123', password_confirmation: '123'}
+  {
+    email: 'Gorlov.Sergey@vavs-org.ru',
+    name: 'Сергей',
+    middlename: 'Александрович',
+    lastname: 'Горлов',
+    role: :user,
+    password: '123',
+    password_confirmation: '123',
+    temporary_storage_warehouse_id: ul_storage.id
+  },
+  {
+    email: 'Masyaev.Yury@vavs-org.ru',
+    name: 'Юрий',
+    middlename: 'Владимирович',
+    lastname: 'Масяев',
+    role: :user, password: '123',
+    password_confirmation: '123',
+    temporary_storage_warehouse_id: ul_storage.id
+  }
 ].each do |e|
   User.create!(e)
 end
@@ -48,7 +68,10 @@ company_names = ['OOO Гранд', 'ОАО Бридж стоун', 'ИП Бел�
     bank_city: 'Москва',
     bank_kor_schet: 8.times.map{ |e| rand(0..9) }.join(''),
     phone:  "+#{79001001010+i}",
-    email: "compnay_#{i}@test.home"
+    email: "compnay_#{i}@test.home",
+    discount: rand(10..50),
+    deferment_of_payment: rand(5..15),
+    director: 'Антон Антонович'
   }
 }.each do |e|
   Company.create!(e)
@@ -58,6 +81,7 @@ companies = Company.all
 
 TemporaryStorageWarehouseTransaction.delete_all
 
+users = ul_storage.users
 letters = %w[A B C E O P T]
 (1..100).map { |i|
   {
@@ -72,7 +96,8 @@ letters = %w[A B C E O P T]
     driver_fullname: "Иванов Иван Васильевич",
     phone: "+#{79001001010+i}",
     deal_type: TemporaryStorageWarehouseTransaction.deal_type.values.sample,
-    country_code: TemporaryStorageWarehouseTransaction::AVAILABLE_COUNTRIES.sample
+    country_code: TemporaryStorageWarehouseTransaction::AVAILABLE_COUNTRIES.sample,
+    user: users.sample
   }
 }.each do |e|
   TemporaryStorageWarehouseTransaction.create!(e)

@@ -16,3 +16,23 @@
 .mr-10 {
   margin-right: 10px
 }
+
+.lh-35 {
+  line-height: 35px;
+}
+
+.nowrap-dotted {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .dl-horizontal dt {
+    width: 170px;
+  }
+
+  .dl-horizontal dd {
+    margin-left: 180px;
+  }
+}

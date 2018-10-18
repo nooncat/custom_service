@@ -4,6 +4,7 @@ class CreateTemporaryStorageWarehouses < ActiveRecord::Migration[5.2]
       t.string :region_name
       t.integer :region_num
 
+      t.string :name
       t.string :ogrn
       t.string :inn
       t.string :kpp
@@ -16,6 +17,8 @@ class CreateTemporaryStorageWarehouses < ActiveRecord::Migration[5.2]
       t.string :bank_kor_schet
       t.string :phone
       t.string :email
+
+      t.string :director
 
       t.timestamps
     end

@@ -6,23 +6,29 @@
     .row
       .col-md-6
         = f.input :name
-        = f.input :phone
+        = f.input :director
         = f.input :ogrn
         = f.input :inn
         = f.input :kpp
         = f.input :uridicheskiy_address
         = f.input :real_address
+        = f.input :phone
+
       .col-md-6
         = f.input :email
+        = f.input :bank_schet
         = f.input :bank_name
         = f.input :bank_bik
         = f.input :bank_city
         = f.input :bank_kor_schet
-        = f.input :bank_schet
+        = f.input :discount
+        = f.input :deferment_of_payment
 
   br
 
   .row
     .col-md-12
       = link_to 'Назад', cabinet_companies_path, class: 'btn btn-primary pull-left'
+      = link_to 'Договор оказания услуг', '#', class: 'pull-left ml-10 lh-35'
+      = link_to 'Прочие документы', '#', class: 'pull-left ml-10 lh-35'
       = f.submit 'Сохранить', class: 'btn btn-success pull-right'

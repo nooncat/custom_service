@@ -1,20 +1,25 @@
 .row
   .col-md-12
-    h2= @user.email
-
+    h2 Профиль СВХ
 
 - @warehouse = @user.temporary_storage_warehouse
 - if @warehouse
   .row
     .col-md-12
-      h3
-        span.pull-right Данные СВХ
-  hr
+      dl.dl-horizontal
+        dt= han(@warehouse, :name)
+        dd= @warehouse.name
+
+        dt= han(@warehouse, :uridicheskiy_address)
+        dd= @warehouse.uridicheskiy_address
+
+        dt= han(@warehouse, :real_address)
+        dd= @warehouse.real_address
   .row
     .col-md-6
       dl.dl-horizontal
-        dt= han(@warehouse, :region_num)
-        dd= @warehouse.region_num
+        dt= han(@warehouse, :director)
+        dd= @warehouse.director
 
         dt= han(@warehouse, :ogrn)
         dd= @warehouse.ogrn
@@ -25,18 +30,16 @@
         dt= han(@warehouse, :kpp)
         dd= @warehouse.kpp
 
-        dt= han(@warehouse, :uridicheskiy_address)
-        dd= @warehouse.uridicheskiy_address
-
-        dt= han(@warehouse, :real_address)
-        dd= @warehouse.real_address
-    .col-md-6
-      dl.dl-horizontal
         dt= han(@warehouse, :phone)
         dd= @warehouse.phone
 
         dt= han(@warehouse, :email)
         dd= @warehouse.email
+
+    .col-md-6
+      dl.dl-horizontal
+        dd
+          b Банковские реквизиты
 
         dt= han(@warehouse, :bank_schet)
         dd= @warehouse.bank_schet
@@ -52,9 +55,15 @@
 
         dt= han(@warehouse, :bank_kor_schet)
         dd= @warehouse.bank_kor_schet
-
-
-
-
-
+  .row
+    .col-md-12
+      h3= han(@warehouse, :users)
+      table.table
+        tbody
+          - @warehouse.users.each do |u|
+            tr
+              td= u.lastname
+              td= u.name
+              td= u.middlename
+              td= u.email
 

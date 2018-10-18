@@ -1,0 +1,21 @@
+.row
+  .col-md-12
+    h2 Уведомление
+
+.row
+  .col-md-12
+    dl.dl-horizontal
+      dt= han(@resource, :recpient)
+      dd= @resource.recpient
+
+      dt= han(@resource, :subject)
+      dd= @resource.subject
+
+      dt= han(@resource, :body)
+      dd= @resource.body
+
+hr
+
+.row
+  .col-md-12
+    = link_to 'Назад', [:edit, :cabinet, @parent], class: 'btn btn-primary pull-left'

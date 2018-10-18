@@ -19,6 +19,7 @@ class CreateTemporaryStorageWarehouseTransactions < ActiveRecord::Migration[5.2]
       t.string :country_code
 
       t.references :company, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

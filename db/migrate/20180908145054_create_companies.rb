@@ -16,6 +16,11 @@ class CreateCompanies < ActiveRecord::Migration[5.2]
       t.string :email
       # t.references :users, foreign_key: true
 
+      t.integer :discount
+      t.integer :deferment_of_payment
+      t.string :director
+
+
       t.timestamps
     end
   end

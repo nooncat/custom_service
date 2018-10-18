@@ -4,6 +4,11 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :email
       t.string :role
       t.string :password_digest
+
+      t.string :name
+      t.string :middlename
+      t.string :lastname
+
       t.references :temporary_storage_warehouse, foreign_key: true
 
       t.timestamps

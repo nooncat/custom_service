@@ -1,6 +1,6 @@
 class Cabinet::TemporaryStorageWarehouseTransactionsController < Cabinet::ApplicationController
   def index
-    @collection = TemporaryStorageWarehouseTransaction.all
+    @collection = TemporaryStorageWarehouseTransaction.all.order(id: :desc)
   end
 
   def new
@@ -25,7 +25,7 @@ class Cabinet::TemporaryStorageWarehouseTransactionsController < Cabinet::Applic
 
   def permitted_params
     params.require(:temporary_storage_warehouse_transaction).permit(
-      :company_id, :vehicle_number, :vehicle_type, :state, :pallet_count, :date,
+      :user_id, :company_id, :vehicle_number, :vehicle_type, :state, :pallet_count, :date,
       :checkin_date, :checkin_notifie, :checkout_date, :checkout_notifie, :phone, :deal_typ, :country_code
     )
   end

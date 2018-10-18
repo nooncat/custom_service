@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :temporary_storage_warehouse_transactions, only: [:index, :new, :create, :edit, :update] do
       scope module: :temporary_storage_warehouse_transactions do
         resources :sellings, only: [:index, :new, :create, :edit, :update, :destroy]
+        resources :notifications, only: [:new, :create, :show]
       end
     end
     resources :companies do

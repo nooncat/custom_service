@@ -4,21 +4,59 @@
 
   .row
     .col-md-6
-      = f.association :company
-      = f.input :driver_fullname
+      = f.association :user, include_blank: false
+      = f.association :company, include_blank: false
       = f.input :vehicle_number
-      = f.input :vehicle_type
-      = f.input :state
-      = f.input :pallet_count
-      = f.input :date, as: :date, html5: true
-    .col-md-6
-      = f.input :checkin_date, as: :date, html5: true
-      = f.input :checkin_notified
-      = f.input :checkout_date, as: :date, html5: true
-      = f.input :checkout_notified
+      = f.input :driver_fullname
       = f.input :phone
+      = f.input :vehicle_type
+      = f.input :pallet_count
+      = f.input :state
+
+    .col-md-6
       = f.input :deal_type
       = f.input :country_code, collection: country_collection
+      = f.input :checkin_date, as: :date, html5: true
+      / = f.input :checkin_notified
+      - if @resource.persisted?
+        .row
+          .col-md-6
+            b Уведомления о заезде
+            br
+            - if @resource.arrival_notifications.blank?
+              div Нет ни одного уведомления
+            - @resource.arrival_notifications.each do |n|
+              = link_to l(n.created_at), [:cabinet, @resource, n]
+              br
+          .col-md-6
+            = link_to 'Создать уведомление', [:new, :cabinet, @resource, :notification, notification_type: :arrival_notice], class: 'btn btn-default pull-right'
+
+      - else
+        b Уведомления о заезде
+        div Нет ни одного уведомления. (Уведомления можно создать после сохранения ТС)
+      br
+
+      = f.input :checkout_date, as: :date, html5: true
+      / = f.input :checkout_notified
+      - if @resource.persisted?
+        .row
+          .col-md-6
+
+            b Уведомления о выезде
+            br
+            - if @resource.departure_notifications.blank?
+              div Нет ни одного уведомления
+            - @resource.departure_notifications.each do |n|
+              = link_to l(n.created_at), [:cabinet, @resource, n]
+              br
+          .col-md-6
+            = link_to 'Создать уведомление', [:new, :cabinet, @resource, :notification, notification_type: :departure_notice], class: 'btn btn-default pull-right'
+      - else
+        b Уведомления о выезде
+        div Нет ни одного уведомления (Уведомления можно создать после сохранения ТС)
+      br
+      = f.input :date, as: :date, html5: true
+
 
   - if @resource.persisted?
     .row

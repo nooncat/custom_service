@@ -1,0 +1,22 @@
+= simple_form_for [:cabinet, @parent, @resource] do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    .row
+      .col-md-12
+        = f.input :notification_type, as: :hidden
+        = f.input :user_id, as: :hidden
+        = f.input :temporary_storage_warehouse_transaction_id, as: :hidden
+    .row
+      .col-md-12
+        = f.input :recpient
+        = f.input :subject
+        = f.input :body
+
+  hr
+
+  .row
+    .col-md-12
+      = link_to 'Назад', [:edit, :cabinet, @parent], class: 'btn btn-primary pull-left'
+      = f.submit 'Сохранить', class: 'btn btn-success pull-right'

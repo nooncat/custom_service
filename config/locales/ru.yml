@@ -13,6 +13,8 @@ ru:
       user:
         email: Email пользователя
       temporary_storage_warehouse:
+        name: Наименование юр. лица
+        director: Генеральный директор
         email: Email СВХ
         region_num: Номер региона
         phone: Телефон СВХ
@@ -20,7 +22,7 @@ ru:
         inn: ИНН
         kpp: КПП
         uridicheskiy_address: Юридический адрес
-        real_address: Физический адрес
+        real_address: Фактический адрес
         bank_name: Название банка
         bank_bik: Бик
         bank_city: Город банка
@@ -41,18 +43,24 @@ ru:
         phone: Телефон водителя
         deal_type: Тип сделки
         country_code: Страна
+        user: Ответственный
       company:
+        id: Номер
+        name: Юр.лицо
         phone: Телефон
         ogrn: ОГРН
         inn: ИНН
         kpp: КПП
-        uridicheskiy_address: Юридический адрес
-        real_address: Физический адрес
+        uridicheskiy_address: Юр. адрес
+        real_address: Фактический адрес
         bank_name: Название банка
         bank_bik: Бик
         bank_city: Город банка
         bank_kor_schet: Кор. счет
         bank_schet: Счет
+        discount: Скидка %
+        deferment_of_payment: Отсрочка (дней)
+        director: Генеральный директор
       company_contact:
         name: Имя
         middlename: Отчество
@@ -65,5 +73,9 @@ ru:
         measure: Единица измерения
         price: Цна за еденицу
         nds_percent: НДС
+      notification:
+        recpient: Получатель
+        subject: Тема
+        body: Сообщение
     messages:
       confirmation: "Подтверждени не совпадает с оригиналом"

@@ -8,23 +8,25 @@
 table.table
   thead
     tr
-      th ID
-      th ОГРН
-      th ИНН
-      th КПП
-      th Юридический адрес
-      th Телефон
-      th Email
+      th= han(Company, :id)
+      th= han(Company, :name)
+      th= han(Company, :uridicheskiy_address)
+      th= han(Company, :real_address)
+      th= han(Company, :phone)
+      th= han(Company, :inn)
+      th= han(Company, :kpp)
+      th= han(Company, :email)
 
   tbody
     - @companies.each do |company|
       tr onClick="location.href='#{edit_cabinet_company_path(company)}'" style="cursor:pointer"
-        td = company.id
-        td = company.ogrn
-        td = company.inn
-        td = company.kpp
-        td = company.uridicheskiy_address
-        td = company.phone
-        td = company.email
+        td= company.id
+        td.nowrap-dotted= company.name
+        td.nowrap-dotted= company.uridicheskiy_address
+        td.nowrap-dotted= company.real_address
+        td= company.phone
+        td= company.inn
+        td= company.kpp
+        td= company.email
 
 br

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_15_064941) do
+ActiveRecord::Schema.define(version: 2018_10_18_053430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,9 @@ ActiveRecord::Schema.define(version: 2018_10_15_064941) do
     t.string "bank_kor_schet"
     t.string "phone"
     t.string "email"
+    t.integer "discount"
+    t.integer "deferment_of_payment"
+    t.string "director"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,6 +46,19 @@ ActiveRecord::Schema.define(version: 2018_10_15_064941) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_company_contacts_on_company_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "notification_type"
+    t.string "recpient"
+    t.string "subject"
+    t.text "body"
+    t.bigint "user_id"
+    t.bigint "temporary_storage_warehouse_transaction_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["temporary_storage_warehouse_transaction_id"], name: "temporary_storage_warehouse_transaction_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "sellings", force: :cascade do |t|
@@ -73,14 +89,17 @@ ActiveRecord::Schema.define(version: 2018_10_15_064941) do
     t.string "deal_type"
     t.string "country_code"
     t.bigint "company_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_temporary_storage_warehouse_transactions_on_company_id"
+    t.index ["user_id"], name: "index_temporary_storage_warehouse_transactions_on_user_id"
   end
 
   create_table "temporary_storage_warehouses", force: :cascade do |t|
     t.string "region_name"
     t.integer "region_num"
+    t.string "name"
     t.string "ogrn"
     t.string "inn"
     t.string "kpp"
@@ -93,6 +112,7 @@ ActiveRecord::Schema.define(version: 2018_10_15_064941) do
     t.string "bank_kor_schet"
     t.string "phone"
     t.string "email"
+    t.string "director"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -101,6 +121,9 @@ ActiveRecord::Schema.define(version: 2018_10_15_064941) do
     t.string "email"
     t.string "role"
     t.string "password_digest"
+    t.string "name"
+    t.string "middlename"
+    t.string "lastname"
     t.bigint "temporary_storage_warehouse_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -108,7 +131,10 @@ ActiveRecord::Schema.define(version: 2018_10_15_064941) do
   end
 
   add_foreign_key "company_contacts", "companies"
+  add_foreign_key "notifications", "temporary_storage_warehouse_transactions"
+  add_foreign_key "notifications", "users"
   add_foreign_key "sellings", "temporary_storage_warehouse_transactions"
   add_foreign_key "temporary_storage_warehouse_transactions", "companies"
+  add_foreign_key "temporary_storage_warehouse_transactions", "users"
   add_foreign_key "users", "temporary_storage_warehouses"
 end

@@ -3,12 +3,11 @@
     h2
       = link_to 'Создать ТС', new_cabinet_temporary_storage_warehouse_transaction_path, class: 'btn btn-success pull-right'
       span.pull-left
-        | Склад временного хранения
+        | Зона таможенного контроля
 hr
 table.table
   thead
     tr
-      th= '#'
       th= 'Состояние А/М'
       th style="width: 130px;"= 'Дата'
       th= 'Контрагент'
@@ -19,13 +18,16 @@ table.table
       th= 'Вид сделки'
       th style="width: 170px;"= 'Страна'
       th style="width: 100px;"= 'Тип ТС'
+      th Водитель
+      th Телефон
+      th Ответственный
+
   tbody
     - @collection.each do |resource|
       tr onClick="location.href='#{edit_cabinet_temporary_storage_warehouse_transaction_path(resource)}'" style="cursor:pointer"
-        td= resource.id
         td= resource.state_text
         td= resource.date ? l(resource.date) : 'не установлено'
-        td
+        td= resource&.company
         td= resource.vehicle_number
         td
           - if [true, false].sample
@@ -39,3 +41,7 @@ table.table
         td= resource.deal_type_text
         td= resource.country_name
         td= resource.vehicle_type_text
+        td= resource.driver_fullname
+        td= resource.phone
+        td= resource.responsible
+
