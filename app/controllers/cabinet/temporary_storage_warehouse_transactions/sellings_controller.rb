@@ -1,52 +1,60 @@
 class Cabinet::TemporaryStorageWarehouseTransactions::SellingsController < Cabinet::ApplicationController
-  before_action :set_selling, only: [:edit, :update, :destroy]
   before_action :set_parent
-
-  def index
-    @sellings = @parent.sellings
-  end
+  before_action :set_resource, only: [:edit, :update, :destroy]
 
   def new
-    @selling = Selling.new(temporary_storage_warehouse_transaction_id: params[:temporary_storage_warehouse_transaction_id])
+    @resource = @parent.build_selling(default_params)
   end
 
   def edit
   end
 
   def create
-    @selling = Selling.new(selling_params)
+    @resource = @parent.build_selling(permitted_params)
 
-    if @selling.save
-      redirect_to [:cabinet, @parent, :sellings], notice: 'Реализация создана.'
+    if @resource.save
+      redirect_to [:edit, :cabinet, @parent, @resource], notice: 'Реализация создана.'
     else
       render :new
     end
   end
 
   def update
-    if @selling.update(selling_params)
-      redirect_to [:cabinet, @parent, :sellings], notice: 'Реализация обновлена.'
+    if @resource.update(permitted_params)
+      redirect_to [:edit, :cabinet, @parent, @resource], notice: 'Реализация обновлена.'
     else
       render :edit
     end
   end
 
   def destroy
-    @selling.destroy
-    redirect_to [:cabinet, @parent, :sellings], notice: 'Реализация удалена.'
+    @resource.destroy
+    redirect_to [:edit, :cabinet, @parent, @resource], notice: 'Реализация удалена.'
   end
 
   private
+
+  def default_params
+    {
+      company_name: @parent.company.name,
+      num: Selling.where(temporary_storage_warehouse_id: current_user.temporary_storage_warehouse_id).count + 1,
+      agreement_num: @parent.company.agreement_num,
+      date: Time.zone.now,
+      planned_payment_date: (@parent.planned_payment_date || Time.zone.now) + @parent.company.deferment_of_payment.days.to_i
+    }
+  end
 
   def set_parent
     @parent = TemporaryStorageWarehouseTransaction.find params[:temporary_storage_warehouse_transaction_id]
   end
 
-  def set_selling
-    @selling = Selling.find(params[:id])
+  def set_resource
+    @resource = @parent.selling
   end
 
-  def selling_params
-    params.require(:selling).permit(:description, :quantity, :measure, :price, :nds_percent).merge(temporary_storage_warehouse_transaction_id: params[:temporary_storage_warehouse_transaction_id])
+  def permitted_params
+    {
+      temporary_storage_warehouse_id: current_user.temporary_storage_warehouse
+    }.merge params.require(:selling).permit(:company_name, :num, :agreement_num, :date, :planned_payment_date)
   end
 end

@@ -44,6 +44,8 @@ ru:
         deal_type: Тип сделки
         country_code: Страна
         user: Ответственный
+        planned_payment_date: Планируемая дата оплаты
+        payed: Оплачено
       company:
         id: Номер
         name: Юр.лицо
@@ -61,6 +63,7 @@ ru:
         discount: Скидка %
         deferment_of_payment: Отсрочка (дней)
         director: Генеральный директор
+        agreement_num: Номер договора
       company_contact:
         name: Имя
         middlename: Отчество
@@ -68,6 +71,12 @@ ru:
         email: Email
         phone: Телефон
       selling:
+        company_name: Контрагент
+        num: Номер счета
+        agreement_num: Номер договора
+        date: От
+        planned_payment_date: Планируемая дата оплаты
+      selling_item:
         description: Описание
         quantity: Количество
         measure: Единица измерения

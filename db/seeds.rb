@@ -71,6 +71,7 @@ company_names = ['OOO Гранд', 'ОАО Бридж стоун', 'ИП Бел�
     email: "compnay_#{i}@test.home",
     discount: rand(10..50),
     deferment_of_payment: rand(5..15),
+    agreement_num: 6.times.map{ |e| rand(0..9) }.join(''),
     director: 'Антон Антонович'
   }
 }.each do |e|

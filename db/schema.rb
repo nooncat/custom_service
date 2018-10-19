@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2018_10_18_053430) do
     t.string "bank_kor_schet"
     t.string "phone"
     t.string "email"
+    t.integer "agreement_num"
     t.integer "discount"
     t.integer "deferment_of_payment"
     t.string "director"
@@ -61,8 +62,8 @@ ActiveRecord::Schema.define(version: 2018_10_18_053430) do
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
-  create_table "sellings", force: :cascade do |t|
-    t.bigint "temporary_storage_warehouse_transaction_id"
+  create_table "selling_items", force: :cascade do |t|
+    t.bigint "selling_id"
     t.text "description"
     t.integer "quantity"
     t.string "measure"
@@ -71,6 +72,20 @@ ActiveRecord::Schema.define(version: 2018_10_18_053430) do
     t.float "nds_total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["selling_id"], name: "index_selling_items_on_selling_id"
+  end
+
+  create_table "sellings", force: :cascade do |t|
+    t.bigint "temporary_storage_warehouse_transaction_id"
+    t.bigint "temporary_storage_warehouse_id"
+    t.string "company_name"
+    t.string "num"
+    t.string "agreement_num"
+    t.datetime "date"
+    t.datetime "planned_payment_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["temporary_storage_warehouse_id"], name: "index_sellings_on_temporary_storage_warehouse_id"
     t.index ["temporary_storage_warehouse_transaction_id"], name: "index_sellings_on_temporary_storage_warehouse_transaction_id"
   end
 
@@ -82,8 +97,10 @@ ActiveRecord::Schema.define(version: 2018_10_18_053430) do
     t.datetime "date"
     t.datetime "checkin_date"
     t.datetime "checkout_date"
+    t.datetime "planned_payment_date"
     t.boolean "checkin_notified"
     t.boolean "checkout_notified"
+    t.boolean "payed"
     t.string "driver_fullname"
     t.string "phone"
     t.string "deal_type"
@@ -133,7 +150,9 @@ ActiveRecord::Schema.define(version: 2018_10_18_053430) do
   add_foreign_key "company_contacts", "companies"
   add_foreign_key "notifications", "temporary_storage_warehouse_transactions"
   add_foreign_key "notifications", "users"
+  add_foreign_key "selling_items", "sellings"
   add_foreign_key "sellings", "temporary_storage_warehouse_transactions"
+  add_foreign_key "sellings", "temporary_storage_warehouses"
   add_foreign_key "temporary_storage_warehouse_transactions", "companies"
   add_foreign_key "temporary_storage_warehouse_transactions", "users"
   add_foreign_key "users", "temporary_storage_warehouses"

@@ -56,12 +56,16 @@
         div Нет ни одного уведомления (Уведомления можно создать после сохранения ТС)
       br
       = f.input :date, as: :date, html5: true
-
+      = f.input :planned_payment_date, as: :date, html5: true
+      = f.input :payed
 
   - if @resource.persisted?
     .row
       .col-md-12
-        = link_to 'К списку реализаций', [:cabinet, @resource, :sellings], class: 'btn btn-default pull-right'
+        - if @resource.selling
+          = link_to 'Редактировать реализацию', [:edit, :cabinet, @resource, @resource.selling], class: 'btn btn-default pull-right'
+        - else
+          = link_to 'Создать реализацию', [:new, :cabinet, @resource, :selling], class: 'btn btn-default pull-right'
 
   hr
 

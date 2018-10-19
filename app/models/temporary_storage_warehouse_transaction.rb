@@ -10,7 +10,7 @@ class TemporaryStorageWarehouseTransaction < ApplicationRecord
   belongs_to :company
   belongs_to :user
 
-  has_many :sellings
+  has_one :selling
   has_many :notifications
 
   alias_attribute :responsible, :user
