@@ -1,0 +1,8 @@
+.row
+  .col-md-12
+    h2
+      = link_to 'Назад', [:edit, :cabinet, svh_transaction, @parent], class: 'btn btn-primary pull-left'
+      span.pull-right
+        | Редактировать услугу
+
+== render 'form'

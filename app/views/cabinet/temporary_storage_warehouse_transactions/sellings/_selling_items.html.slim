@@ -1,7 +1,7 @@
 .row
   .col-md-12
     h2
-      = link_to 'Создать услугу', new_cabinet_temporary_storage_warehouse_transaction_selling_path, class: 'btn btn-success pull-right'
+      = link_to 'Создать услугу', [:new, :cabinet, @resource, :selling_item], class: 'btn btn-success pull-right'
       span.pull-left
         | Услуги:
 
@@ -9,20 +9,17 @@
   table.table
     thead
       tr
-        th ID
-        th Description
-        th Quantity
-        th Measure
-        th Price
-        th Nds percent
-        th Nds total
-        th
-        th
-        th
+        th= han(SellingItem, :id)
+        th= han(SellingItem, :description)
+        th= han(SellingItem, :quantity)
+        th= han(SellingItem, :measure)
+        th= han(SellingItem, :price)
+        th= han(SellingItem, :nds_percent)
+        th= han(SellingItem, :nds_total)
 
     tbody
       - collection.each do |e|
-        tr
+        tr onClick="location.href='#{polymorphic_path [:edit, :cabinet, @resource, e]}'" style="cursor:pointer"
           td = e.id
           td = e.description
           td = e.quantity
@@ -30,8 +27,6 @@
           td = e.price
           td = e.nds_percent
           td = e.nds_total
-          td = link_to 'Edit', [:edit, :cabinet, e.temporary_storage_warehouse_transaction, e]
-          td = link_to 'Destroy', [:cabinet, e.temporary_storage_warehouse_transaction, e], data: { confirm: 'Are you sure?' }, method: :delete
 - else
   br
   .well Не создано ни одной услуги

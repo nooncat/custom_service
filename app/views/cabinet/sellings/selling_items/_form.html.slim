@@ -1,4 +1,4 @@
-= simple_form_for [:cabinet, :temporary_storage_warehouse_transaction, @selling] do |f|
+= simple_form_for [:cabinet, @parent, @resource] do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
@@ -18,5 +18,7 @@
 
   .row
     .col-md-12
-      = link_to 'Назад', cabinet_temporary_storage_warehouse_transaction_sellings_path, class: 'btn btn-primary pull-left'
+      = link_to 'Назад', [:edit, :cabinet, svh_transaction, @parent], class: 'btn btn-primary pull-left'
+      - if @resource.persisted?
+        = link_to 'Удалить', [:cabinet, @parent, @resource], data: { confirm: 'Вы уверены?' }, method: :delete, class: 'ml-10 btn btn-danger pull-left'
       = f.submit 'Сохранить', class: 'btn btn-success pull-right'

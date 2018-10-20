@@ -1,6 +1,8 @@
 class Cabinet::Sellings::SellingItemsController < Cabinet::ApplicationController
-  before_action :set_resource, only: [:edit, :update, :destroy]
   before_action :set_parent
+  before_action :set_resource, only: [:edit, :update, :destroy]
+
+  helper_method :svh_transaction
 
   def new
     @resource = @parent.selling_items.build
@@ -13,7 +15,7 @@ class Cabinet::Sellings::SellingItemsController < Cabinet::ApplicationController
     @resource = @parent.selling_items.build(permitted_params)
 
     if @resource.save
-      redirect_to [:cabinet, @parent, :sellings], notice: 'Реализация создана.'
+      redirect_to [:edit, :cabinet, svh_transaction, @parent], notice: 'Услуга создана.'
     else
       render :new
     end
@@ -21,7 +23,7 @@ class Cabinet::Sellings::SellingItemsController < Cabinet::ApplicationController
 
   def update
     if @resource.update(permitted_params)
-      redirect_to [:cabinet, @parent, :sellings], notice: 'Реализация обновлена.'
+      redirect_to [:edit, :cabinet, svh_transaction, @parent], notice: 'Услуга обновлена.'
     else
       render :edit
     end
@@ -29,17 +31,21 @@ class Cabinet::Sellings::SellingItemsController < Cabinet::ApplicationController
 
   def destroy
     @resource.destroy
-    redirect_to [:cabinet, @parent, :sellings], notice: 'Реализация удалена.'
+    redirect_to [:edit, :cabinet, svh_transaction, @parent], notice: 'Услуга удалена.'
   end
 
   private
 
+  def svh_transaction
+    @parent.temporary_storage_warehouse_transaction
+  end
+
   def set_parent
-    @parent = TemporaryStorageWarehouseTransaction.find params[:temporary_storage_warehouse_transaction_id]
+    @parent = Selling.find params[:selling_id]
   end
 
   def set_resource
-    @resource = Selling.find(params[:id])
+    @resource = @parent.selling_items.find(params[:id])
   end
 
   def permitted_params
