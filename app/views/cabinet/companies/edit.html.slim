@@ -6,28 +6,6 @@
         | Редактировать контрагента
 hr
 
-== render 'form'
+= render 'form'
 
-.row
-  .col-md-12
-    h2
-      = link_to 'Создать контакт', [:new, :cabinet, @company, :company_contact], class: 'btn btn-default pull-right'
-      span.pull-left
-        | Контакты
-
-table.table
-  thead
-    tr
-      th= han(CompanyContact, :name)
-      th= han(CompanyContact, :middlename)
-      th= han(CompanyContact, :lastname)
-      th= han(CompanyContact, :phone)
-      th= han(CompanyContact, :email)
-  tbody
-    - @company.company_contacts.each do |contact|
-      tr onClick="location.href='#{edit_cabinet_company_company_contact_path(company_id: @company.id, id: contact.id)}'" style="cursor:pointer"
-        td= contact.name
-        td= contact.middlename
-        td= contact.lastname
-        td= contact.phone
-        td= contact.email
+= render partial: 'contacts', locals: {collection: @resource.company_contacts}

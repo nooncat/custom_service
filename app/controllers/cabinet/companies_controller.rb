@@ -1,44 +1,52 @@
 class Cabinet::CompaniesController < Cabinet::ApplicationController
-  before_action :set_company, only: [:edit, :update, :destroy]
+  before_action :set_resource, only: [:edit, :update, :destroy]
 
   def index
-    @companies = Company.all.order(:id)
+    @collection = Company.all.order(:id)
   end
 
   def new
-    @company = Company.new
+    @resource = Company.new
   end
 
   def edit
   end
 
   def create
-    @company = Company.new(company_params)
+    @resource = Company.new(company_params)
 
-    if @company.save
-      redirect_to [:cabinet, :companies], notice: 'Контрагент создан.'
+    if @resource.save
+      redirect 'Контрагент создан.'
     else
       render :new
     end
   end
 
   def update
-    if @company.update(company_params)
-      redirect_to [:edit, :cabinet, @company], notice: 'Контрагент обновлен.'
+    if @resource.update(company_params)
+      redirect 'Контрагент обновлен.'
     else
       render :edit
     end
   end
 
   def destroy
-    @company.destroy
+    @resource.destroy
     redirect_to [:cabinet, :companies], notice: 'Контрагент удален.'
   end
 
   private
 
-  def set_company
-    @company = Company.find(params[:id])
+  def redirect(msg)
+    if params[:commit] == 'Сохранить'
+      redirect_to [:edit, :cabinet, @resource], notice: msg
+    else
+      redirect_to [:cabinet, :companies], notice: msg
+    end
+  end
+
+  def set_resource
+    @resource = Company.find(params[:id])
   end
 
   def company_params

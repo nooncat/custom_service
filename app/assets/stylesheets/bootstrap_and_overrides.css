@@ -40,3 +40,5 @@ input[type="checkbox"] {
     margin-left: 180px;
   }
 }
+
+.invalid-feedback { color: red; }

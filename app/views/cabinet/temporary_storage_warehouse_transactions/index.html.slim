@@ -12,7 +12,7 @@ table.table
       th style="width: 130px;"= 'Дата'
       th= 'Контрагент'
       th= 'Гос Номер'
-      th= 'Выставлен'
+      th= 'Выставлен счет'
       th= 'Уведомлене заезда'
       th= 'Уведомлене выезда'
       th= 'Вид сделки'
@@ -20,7 +20,7 @@ table.table
       th style="width: 100px;"= 'Тип ТС'
       th Водитель
       th Телефон
-      th Ответственный
+      th= han(TemporaryStorageWarehouseTransaction, :user)
 
   tbody
     - @collection.each do |resource|

@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2018_10_18_053430) do
     t.string "bank_kor_schet"
     t.string "phone"
     t.string "email"
-    t.integer "agreement_num"
+    t.string "agreement_num"
     t.integer "discount"
     t.integer "deferment_of_payment"
     t.string "director"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 2018_10_18_053430) do
     t.string "agreement_num"
     t.datetime "date"
     t.datetime "planned_payment_date"
+    t.boolean "payed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["temporary_storage_warehouse_id"], name: "index_sellings_on_temporary_storage_warehouse_id"
@@ -97,10 +98,8 @@ ActiveRecord::Schema.define(version: 2018_10_18_053430) do
     t.datetime "date"
     t.datetime "checkin_date"
     t.datetime "checkout_date"
-    t.datetime "planned_payment_date"
     t.boolean "checkin_notified"
     t.boolean "checkout_notified"
-    t.boolean "payed"
     t.string "driver_fullname"
     t.string "phone"
     t.string "deal_type"

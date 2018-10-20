@@ -12,4 +12,8 @@ class User < ApplicationRecord
   def to_s
     email
   end
+
+  def full_name
+    [lastname, name, middlename].compact.join(' ')
+  end
 end

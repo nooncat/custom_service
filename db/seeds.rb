@@ -53,20 +53,20 @@ end
 
 Company.delete_all
 
-company_names = ['OOO Гранд', 'ОАО Бридж стоун', 'ИП Белов', 'ООО Самара строй', 'ОАО РЖД', 'ОАО Инвест строй', 'ОАО УАЗ', 'ОАО ТАЗ', 'ОАО Камаз', 'ООО Автозапчасть']
+company_names = ['OOO Гранд', 'ОАО Бридж стоун', 'ИП Белов', 'ООО Самара строй', 'ОАО РЖД', 'ОАО Инвест строй', 'ОАО УАЗ', 'ОАО ТАЗ', 'ОАО Камаз', 'ООО Автозапчасть', 'ИП Петров']
 (1..10).map { |i|
   {
     name: company_names[i],
-    ogrn: 8.times.map{ |e| rand(0..9) }.join(''),
-    inn: 8.times.map{ |e| rand(0..9) }.join(''),
-    kpp: 8.times.map{ |e| rand(0..9) }.join(''),
+    ogrn: 13.times.map{ |e| rand(0..9) }.join(''),
+    inn: 10.times.map{ |e| rand(0..9) }.join(''),
+    kpp: 9.times.map{ |e| rand(0..9) }.join(''),
     uridicheskiy_address: 'г.Москва. ул. Пушкина, д.101, оф 101',
     real_address: 'г.Москва. ул. Пушкина, д.101, оф 101',
-    bank_schet: 8.times.map{ |e| rand(0..9) }.join(''),
+    bank_schet: 20.times.map{ |e| rand(0..9) }.join(''),
     bank_name: 'ПАО БИНБАНК',
-    bank_bik: 8.times.map{ |e| rand(0..9) }.join(''),
+    bank_bik: 9.times.map{ |e| rand(0..9) }.join(''),
     bank_city: 'Москва',
-    bank_kor_schet: 8.times.map{ |e| rand(0..9) }.join(''),
+    bank_kor_schet: 20.times.map{ |e| rand(0..9) }.join(''),
     phone:  "+#{79001001010+i}",
     email: "compnay_#{i}@test.home",
     discount: rand(10..50),

@@ -1,3 +1,12 @@
+.row
+  .col-md-12
+    h2
+      = link_to 'Назад', [:edit, :cabinet, @parent], class: 'btn btn-primary pull-left'
+      span.pull-right
+        | Редактировать реализацию
+
+hr
+
 = render partial: 'form'
 
 = render partial: 'selling_items', locals: {collection: @resource.selling_items}

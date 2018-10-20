@@ -2,13 +2,13 @@ ru:
   enumerize:
     temporary_storage_warehouse_transaction:
       vehicle_type:
-        truck: еврофура
-        less_15: до 1.5 тонны
-        less_30: до 3 тонн
+        truck: Еврофура
+        less_15: До 1.5 тонны
+        less_30: До 3 тонн
       state:
-        checkin: прибыл
-        inprogress: ЗТК
-        chekout: покинул
+        checkin: Прибыл в ЗТК
+        inprogress: Размещен на СВХ
+        chekout: Покинул ЗТК
       deal_type:
-        import: импорт
-        export: экспорт
+        import: Импорт
+        export: Экспорт

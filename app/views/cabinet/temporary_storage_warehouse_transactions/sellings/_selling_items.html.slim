@@ -2,6 +2,8 @@
   .col-md-12
     h2
       = link_to 'Создать услугу', [:new, :cabinet, @resource, :selling_item], class: 'btn btn-success pull-right'
+      - if collection.any?
+        = link_to 'Сгенерировать счета', [:cabinet, @resource, :invoice], method: :post, class: 'btn btn-success pull-right mr-10'
       span.pull-left
         | Услуги:
 

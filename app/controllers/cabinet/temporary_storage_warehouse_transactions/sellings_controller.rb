@@ -40,7 +40,7 @@ class Cabinet::TemporaryStorageWarehouseTransactions::SellingsController < Cabin
       num: Selling.where(temporary_storage_warehouse_id: current_user.temporary_storage_warehouse_id).count + 1,
       agreement_num: @parent.company.agreement_num,
       date: Time.zone.now,
-      planned_payment_date: (@parent.planned_payment_date || Time.zone.now) + @parent.company.deferment_of_payment.days.to_i
+      planned_payment_date: Time.zone.now + @parent.company.deferment_of_payment.to_i.days
     }
   end
 
@@ -55,6 +55,6 @@ class Cabinet::TemporaryStorageWarehouseTransactions::SellingsController < Cabin
   def permitted_params
     {
       temporary_storage_warehouse_id: current_user.temporary_storage_warehouse.id
-    }.merge params.require(:selling).permit(:company_name, :num, :agreement_num, :date, :planned_payment_date)
+    }.merge params.require(:selling).permit(:payed, :company_name, :num, :agreement_num, :date, :planned_payment_date)
   end
 end

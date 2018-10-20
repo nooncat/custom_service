@@ -1,4 +1,4 @@
-= simple_form_for [:cabinet, @company] do |f|
+= simple_form_for [:cabinet, @resource] do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
@@ -30,6 +30,7 @@
   .row
     .col-md-12
       = link_to 'Назад', cabinet_companies_path, class: 'btn btn-primary pull-left'
-      = link_to 'Договор оказания услуг', '#', class: 'pull-left ml-10 lh-35'
+      = link_to 'Договор оказания услуг', '/docs/agreement.pdf', target: 'blank', class: 'pull-left ml-10 lh-35'
       = link_to 'Прочие документы', '#', class: 'pull-left ml-10 lh-35'
       = f.submit 'Сохранить', class: 'btn btn-success pull-right'
+      = f.submit 'Сохранить и закрыть', class: 'btn btn-success pull-right mr-10'

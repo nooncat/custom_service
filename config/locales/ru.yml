@@ -33,9 +33,9 @@ ru:
         vehicle_number: Номер ТС
         vehicle_type: Тип ТС
         state: Состояние
-        pallet_count: Количество палет
+        pallet_count: Количество грузовых мест
         date: Время записи
-        checkin_date: Время въезда
+        checkin_date: Время заезда
         checkout_date: Время выезда
         checkin_notified: Уведомление о заезде
         checkout_notified: Уведомление о выезде
@@ -43,9 +43,8 @@ ru:
         phone: Телефон водителя
         deal_type: Тип сделки
         country_code: Страна
-        user: Ответственный
+        user: Ответственный сотрудник
         planned_payment_date: Планируемая дата оплаты
-        payed: Оплачено
       company:
         id: Номер
         name: Юр.лицо
@@ -61,7 +60,7 @@ ru:
         bank_kor_schet: Кор. счет
         bank_schet: Счет
         discount: Скидка %
-        deferment_of_payment: Отсрочка (дней)
+        deferment_of_payment: Отсрочка платежа (дней)
         director: Генеральный директор
         agreement_num: Номер договора
       company_contact:
@@ -76,6 +75,7 @@ ru:
         agreement_num: Номер договора
         date: От
         planned_payment_date: Планируемая дата оплаты
+        payed: Оплачено
       selling_item:
         description: Описание
         quantity: Количество

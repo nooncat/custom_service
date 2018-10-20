@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :sellings, only: [] do
       scope module: :sellings do
         resources :selling_items, only: [:new, :create, :edit, :update, :destroy]
+        resource :invoice, only: [:create]
       end
     end
 

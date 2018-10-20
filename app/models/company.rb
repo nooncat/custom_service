@@ -2,12 +2,12 @@ class Company < ApplicationRecord
 
   has_many :company_contacts
 
-  validates :ogrn, length: {maximum: 13}
-  validates :inn, length: {maximum: 10}
-  validates :kpp, length: {maximum: 9}
-  validates :bank_schet, length: {maximum: 20}
-  validates :bank_bik, length: {maximum: 9}
-  validates :bank_kor_schet, length: {maximum: 20}
+  validates :ogrn, format: {with: /\d{13}/, message: 'имеет не верный формат, должно содержать 13 символов'}
+  validates :inn, format: {with: /\d{10}/, message: 'имеет не верный формат, должно содержать 10 символов'}
+  validates :kpp, format: {with: /\d{9}/, message: 'имеет не верный формат, должно содержать 9 символов'}
+  validates :bank_schet, format: {with: /\d{20}/, message: 'имеет не верный формат, должно содержать 20 символов'}
+  validates :bank_bik, format: {with: /\d{9}/, message: 'имеет не верный формат, должно содержать 9 символов'}
+  validates :bank_kor_schet, format: {with: /\d{20}/, message: 'имеет не верный формат, должно содержать 20 символов'}
 
   def to_s
     name.to_s

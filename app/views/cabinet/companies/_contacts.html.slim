@@ -1,0 +1,27 @@
+- if collection.any?
+  .row
+    .col-md-12
+      h2
+        = link_to 'Создать контакт', [:new, :cabinet, @company, :company_contact], class: 'btn btn-default pull-right'
+        span.pull-left
+          | Контакты
+
+  table.table
+    thead
+      tr
+        th= han(CompanyContact, :name)
+        th= han(CompanyContact, :middlename)
+        th= han(CompanyContact, :lastname)
+        th= han(CompanyContact, :phone)
+        th= han(CompanyContact, :email)
+    tbody
+      - collection.each do |e|
+        tr onClick="location.href='#{edit_cabinet_company_company_contact_path(company_id: @company.id, id: e.id)}'" style="cursor:pointer"
+          td= e.name
+          td= e.middlename
+          td= e.lastname
+          td= e.phone
+          td= e.email
+- else
+  br
+  .well Не создано ни одного контакта

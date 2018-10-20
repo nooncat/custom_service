@@ -1,7 +1,7 @@
 .row
   .col-md-12
     h2
-      = link_to 'Создать контрагента', new_cabinet_company_path, class: 'btn btn-success pull-right'
+      = link_to 'Создать контрагента', [:new, :cabinet, :company], class: 'btn btn-success pull-right'
       span.pull-left
         | Контрагенты
 
@@ -18,15 +18,15 @@ table.table
       th= han(Company, :email)
 
   tbody
-    - @companies.each do |company|
-      tr onClick="location.href='#{edit_cabinet_company_path(company)}'" style="cursor:pointer"
-        td= company.id
-        td.nowrap-dotted= company.name
-        td.nowrap-dotted= company.uridicheskiy_address
-        td.nowrap-dotted= company.real_address
-        td= company.phone
-        td= company.inn
-        td= company.kpp
-        td= company.email
+    - @collection.each do |e|
+      tr onClick="location.href='#{edit_cabinet_company_path(e)}'" style="cursor:pointer"
+        td= e.id
+        td.nowrap-dotted= e.name
+        td= e.uridicheskiy_address
+        td= e.real_address
+        td= e.phone
+        td= e.inn
+        td= e.kpp
+        td= e.email
 
 br
