@@ -16,8 +16,11 @@ Rails.application.routes.draw do
         resources :notifications, only: [:new, :create, :show]
       end
     end
-    scope module: :sellings do
-      resources :selling_items, only: [:index, :new, :create, :edit, :update, :destroy]
+
+    resource :sellings, only: [] do
+      scope module: :sellings do
+        resources :selling_items, only: [:new, :create, :edit, :update, :destroy]
+      end
     end
 
     resources :companies do

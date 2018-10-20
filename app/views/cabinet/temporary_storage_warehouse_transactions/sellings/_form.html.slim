@@ -11,10 +11,9 @@
         = f.input :date, as: :date, html5: true
         = f.input :planned_payment_date, as: :date, html5: true
 
-  hr
-
   .row
     .col-md-12
       = link_to 'Назад', [:edit, :cabinet, @parent], class: 'btn btn-primary pull-left'
       = f.submit 'Сохранить', class: 'btn btn-success pull-right'
 
+  hr
