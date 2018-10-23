@@ -8,19 +8,19 @@ hr
 table.table
   thead
     tr
-      th= 'Состояние А/М'
-      th style="width: 130px;"= 'Дата'
-      th= 'Контрагент'
-      th= 'Гос Номер'
+      th= sort_link @q, :state, han(TemporaryStorageWarehouseTransaction, :state)
+      th style="width: 130px;"= sort_link @q, :date, 'Дата'
+      th= sort_link @q, :company_name, 'Контрагент'
+      th= sort_link @q, :vehicle_number, 'Гос Номер'
       th= 'Выставлен счет'
-      th= 'Уведомлене заезда'
-      th= 'Уведомлене выезда'
-      th= 'Вид сделки'
+      th= sort_link @q, :checkin_notified, 'Уведомлене заезда'
+      th= sort_link @q, :checkout_notified, 'Уведомлене выезда'
+      th= sort_link @q, :deal_type, 'Вид сделки'
       th style="width: 170px;"= 'Страна'
-      th style="width: 100px;"= 'Тип ТС'
-      th Водитель
-      th Телефон
-      th= han(TemporaryStorageWarehouseTransaction, :user)
+      th style="width: 100px;"= sort_link @q, :vehicle_type, 'Тип ТС'
+      th= sort_link @q, :driver_fullname, 'Водитель'
+      th= sort_link @q, :phone, han(TemporaryStorageWarehouseTransaction, :phone)
+      th= sort_link @q, :user_email, han(TemporaryStorageWarehouseTransaction, :user)
 
   tbody
     - @collection.each do |resource|
@@ -45,3 +45,4 @@ table.table
         td= resource.phone
         td= resource.responsible
 
+= paginate @collection, theme: 'twitter-bootstrap-4'

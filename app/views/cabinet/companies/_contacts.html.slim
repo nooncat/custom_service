@@ -1,11 +1,11 @@
-- if collection.any?
-  .row
-    .col-md-12
-      h2
-        = link_to 'Создать контакт', [:new, :cabinet, @company, :company_contact], class: 'btn btn-default pull-right'
-        span.pull-left
-          | Контакты
+.row
+  .col-md-12
+    h2
+      = link_to 'Создать контакт', [:new, :cabinet, @resource, :company_contact], class: 'btn btn-default pull-right'
+      span.pull-left
+        | Контакты
 
+- if collection.any?
   table.table
     thead
       tr
@@ -16,7 +16,7 @@
         th= han(CompanyContact, :email)
     tbody
       - collection.each do |e|
-        tr onClick="location.href='#{edit_cabinet_company_company_contact_path(company_id: @company.id, id: e.id)}'" style="cursor:pointer"
+        tr onClick="location.href='#{edit_cabinet_company_company_contact_path(company_id: @resource.id, id: e.id)}'" style="cursor:pointer"
           td= e.name
           td= e.middlename
           td= e.lastname

@@ -2,7 +2,8 @@ class Cabinet::CompaniesController < Cabinet::ApplicationController
   before_action :set_resource, only: [:edit, :update, :destroy]
 
   def index
-    @collection = Company.all.order(:id)
+    @q = Company.ransack params[:q]
+    @collection = @q.result.page(params[:page])
   end
 
   def new
@@ -52,7 +53,7 @@ class Cabinet::CompaniesController < Cabinet::ApplicationController
   def company_params
     params.require(:company).permit(:ogrn, :inn, :kpp, :uridicheskiy_address, :real_address,
       :bank_schet, :bank_name, :bank_bik, :bank_city, :bank_kor_schet, :phone, :email,
-      :users_id, :agreement_num
+      :users_id, :agreement_num, :name, :director
     )
   end
 end

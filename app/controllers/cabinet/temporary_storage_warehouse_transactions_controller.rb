@@ -2,7 +2,8 @@ class Cabinet::TemporaryStorageWarehouseTransactionsController < Cabinet::Applic
   before_action :set_resource, only: [:edit, :update]
 
   def index
-    @collection = TemporaryStorageWarehouseTransaction.all.order(id: :desc)
+    @q = TemporaryStorageWarehouseTransaction.ransack params[:q]
+    @collection = @q.result.page(params[:page])
   end
 
   def new
@@ -42,7 +43,9 @@ class Cabinet::TemporaryStorageWarehouseTransactionsController < Cabinet::Applic
 
   def default_parmas
     {
-      user_id: current_user.id
+      user_id: current_user.id,
+      date: Time.zone.now,
+      checkin_date: Time.zone.now # only for new
     }
   end
 
@@ -53,7 +56,7 @@ class Cabinet::TemporaryStorageWarehouseTransactionsController < Cabinet::Applic
   def permitted_params
     default_parmas.merge(
       params.require(:temporary_storage_warehouse_transaction).permit(
-        :company_id, :vehicle_number, :vehicle_type, :state, :pallet_count, :date,
+        :company_id, :vehicle_number, :vehicle_type, :state, :pallet_count,
         :checkin_date, :checkin_notifie, :checkout_date, :checkout_notifie, :phone, :deal_typ, :country_code,
         :planned_payment_date
       )

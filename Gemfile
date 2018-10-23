@@ -51,6 +51,7 @@ gem 'twitter-bootstrap-rails'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
 gem 'rails_admin', '~> 1.2'
 gem 'cancancan'
 gem 'pg'
@@ -60,6 +61,7 @@ gem 'enumerize'
 gem 'bcrypt', '~> 3.1.7'
 gem 'russian'
 gem 'countries'
+gem 'ransack', github: 'activerecord-hackery/ransack'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

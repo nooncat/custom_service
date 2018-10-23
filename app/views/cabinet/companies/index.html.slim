@@ -8,14 +8,14 @@
 table.table
   thead
     tr
-      th= han(Company, :id)
-      th= han(Company, :name)
-      th= han(Company, :uridicheskiy_address)
-      th= han(Company, :real_address)
-      th= han(Company, :phone)
-      th= han(Company, :inn)
-      th= han(Company, :kpp)
-      th= han(Company, :email)
+      th= sort_link @q, :id, han(Company, :id)
+      th= sort_link @q, :name, han(Company, :name)
+      th= sort_link @q, :uridicheskiy_address, han(Company, :uridicheskiy_address)
+      th= sort_link @q, :real_address, han(Company, :real_address)
+      th= sort_link @q, :phone, han(Company, :phone)
+      th= sort_link @q, :inn, han(Company, :inn)
+      th= sort_link @q, :kpp, han(Company, :kpp)
+      th= sort_link @q, :email, han(Company, :email)
 
   tbody
     - @collection.each do |e|
@@ -28,5 +28,7 @@ table.table
         td= e.inn
         td= e.kpp
         td= e.email
+
+= paginate @collection, theme: 'twitter-bootstrap-4'
 
 br

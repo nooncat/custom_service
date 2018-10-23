@@ -55,7 +55,7 @@
         b Уведомления о выезде
         div Нет ни одного уведомления (Уведомления можно создать после сохранения ТС)
       br
-      = f.input :date, as: :date, html5: true
+      = f.input :date, as: :datetime, html5: true, disabled: true
 
   - if @resource.persisted?
     .row

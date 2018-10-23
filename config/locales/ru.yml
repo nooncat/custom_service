@@ -32,9 +32,9 @@ ru:
         company: Контрагент
         vehicle_number: Номер ТС
         vehicle_type: Тип ТС
-        state: Состояние
+        state: Состояние  А/М
         pallet_count: Количество грузовых мест
-        date: Время записи
+        date: Дата и время последнего обновления записи
         checkin_date: Время заезда
         checkout_date: Время выезда
         checkin_notified: Уведомление о заезде
