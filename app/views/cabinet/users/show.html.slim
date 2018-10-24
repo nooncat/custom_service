@@ -66,4 +66,15 @@
               td= u.name
               td= u.middlename
               td= u.email
+  .row
+    .col-md-12
+      h3 Услуги
+      table.table
+        tbody
+          - tsw_services.each do |s|
+            tr
+              td= '%.2f' % s[:price]
+              td руб.
+              td= s[:measure]
+              td= s[:description]
 

@@ -5,6 +5,14 @@
   .form-inputs
     .row
       .col-md-12
+        .form-group.integer.optional.selling_item_quantity
+          label.form-control-label.optional for="autofilling"
+           | Автозаполнение
+          = select_tag "autofilling", options_for_select(tsw_services_select_collection), class: 'form-control numeric integer optional'
+
+  .form-inputs
+    .row
+      .col-md-12
         = f.input :description
     .row
       .col-md-6
@@ -22,3 +30,20 @@
       - if @resource.persisted?
         = link_to 'Удалить', [:cabinet, @parent, @resource], data: { confirm: 'Вы уверены?' }, method: :delete, class: 'ml-10 btn btn-danger pull-left'
       = f.submit 'Сохранить', class: 'btn btn-success pull-right'
+
+javascript:
+  tsw_services = #{tsw_services.to_json.html_safe}
+
+  $('#autofilling').on('change', function(e) {
+    var target = e.currentTarget;
+
+    var value = target.value;
+    if (value == 0) { return false }
+
+    var tsw_service = tsw_services[value - 1];
+
+    for (var key in tsw_service) {
+      console.log(key, tsw_service[key]);
+      $('[name="selling_item[' + key + ']"]').val(tsw_service[key])
+    }
+  })

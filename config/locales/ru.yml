@@ -28,6 +28,7 @@ ru:
         bank_city: Город банка
         bank_kor_schet: Кор. счет
         bank_schet: Счет
+        users: Пользователи
       temporary_storage_warehouse_transaction:
         company: Контрагент
         vehicle_number: Номер ТС
