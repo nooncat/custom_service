@@ -4,17 +4,21 @@
 
   .form-inputs
     .row
-      .col-md-12
-        = f.input :company_name
+      .col-md-6
         = f.input :num
         = f.input :agreement_num
+      .col-md-6
         = f.input :date, as: :date, html5: true
         = f.input :planned_payment_date, as: :date, html5: true
+    .row
+      .col-md-12
+        = f.input :company_name
         = f.input :payed
 
   .row
     .col-md-12
-      = link_to 'Назад', [:edit, :cabinet, @parent], class: 'btn btn-primary pull-left'
+      / = link_to 'Назад', [:edit, :cabinet, @parent], class: 'btn btn-primary pull-left'
       = f.submit 'Сохранить', class: 'btn btn-success pull-right'
+      = f.submit 'Сохранить и закрыть', class: 'btn btn-success pull-right mr-10'
 
   hr

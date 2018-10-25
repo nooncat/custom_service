@@ -21,6 +21,10 @@
   line-height: 35px;
 }
 
+.nowrap {
+  white-space: nowrap;
+}
+
 .nowrap-dotted {
   text-overflow: ellipsis;
   overflow: hidden;

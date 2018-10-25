@@ -82,7 +82,9 @@ ru:
         quantity: Количество
         measure: Единица измерения
         price: Цна за еденицу
-        nds_percent: НДС
+        nds_percent: НДС %
+        nds_total: НДС
+        total: Всего
       notification:
         recpient: Получатель
         subject: Тема

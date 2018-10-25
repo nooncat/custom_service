@@ -13,7 +13,7 @@ class Cabinet::TemporaryStorageWarehouseTransactions::SellingsController < Cabin
     @resource = @parent.build_selling(permitted_params)
 
     if @resource.save
-      redirect_to [:edit, :cabinet, @parent, @resource], notice: 'Реализация создана.'
+      redirect 'Реализация создана.'
     else
       render :new
     end
@@ -21,7 +21,7 @@ class Cabinet::TemporaryStorageWarehouseTransactions::SellingsController < Cabin
 
   def update
     if @resource.update(permitted_params)
-      redirect_to [:edit, :cabinet, @parent, @resource], notice: 'Реализация обновлена.'
+      redirect 'Реализация обновлена.'
     else
       render :edit
     end
@@ -33,6 +33,14 @@ class Cabinet::TemporaryStorageWarehouseTransactions::SellingsController < Cabin
   end
 
   private
+
+  def redirect(msg)
+    if params[:commit] == 'Сохранить'
+      redirect_to [:edit, :cabinet, @parent, @resource], notice: msg
+    else
+      redirect_to [:edit, :cabinet, @parent], notice: msg
+    end
+  end
 
   def default_params
     {

@@ -41,6 +41,7 @@ javascript:
     if (value == 0) { return false }
 
     var tsw_service = tsw_services[value - 1];
+    tsw_service['nds_percent'] = 18;
 
     for (var key in tsw_service) {
       console.log(key, tsw_service[key]);

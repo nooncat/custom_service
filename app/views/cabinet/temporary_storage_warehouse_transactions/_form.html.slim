@@ -17,6 +17,7 @@
       = f.input :deal_type, include_blank: false
       = f.input :country_code, collection: country_collection, include_blank: false
       = f.input :checkin_date, as: :datetime, html5: true
+
       / = f.input :checkin_notified
       - if @resource.persisted?
         .row
@@ -72,3 +73,9 @@
       = link_to 'Назад', cabinet_temporary_storage_warehouse_transactions_path, class: 'btn btn-primary pull-left'
       = f.submit 'Сохранить', class: 'btn btn-success pull-right'
       = f.submit 'Сохранить и закрыть', class: 'btn btn-success pull-right mr-10'
+
+javascript:
+  $('input[name="temporary_storage_warehouse_transaction[checkin_date]"], input[name="temporary_storage_warehouse_transaction[checkout_date]"]').on('click', function(e) {
+    var target = e.currentTarget;
+    if (target.value == '') { target.value = new Date().toDatetimeLocal() }
+  })
