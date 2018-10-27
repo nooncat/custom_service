@@ -21,8 +21,8 @@ table.table
         td= e.company_name
         td= e.num
         td= e.agreement_num
-        td= l e.date
-        td= l e.planned_payment_date
+        td= e.date ? l(e.date) : 'Не определена'
+        td= e.planned_payment_date ? l(e.planned_payment_date) : 'Не определена'
         td
           - if e.payed
             i.fa.fa-check style="color: green"

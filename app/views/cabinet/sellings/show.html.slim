@@ -13,13 +13,13 @@ table.table.dl-table.col-2
       td= @resource.company_name
       td.sep
       td.dt= han(@resource, :date)
-      td= l @resource.date
+      td= @resource.date ? l(@resource.date) : 'Не определена'
     tr
       td.dt= han(@resource, :num)
       td= @resource.num
       td.sep
       td.dt= han(@resource, :planned_payment_date)
-      td= l @resource.planned_payment_date
+      td= @resource.planned_payment_date ? l(@resource.planned_payment_date) : 'Не определена'
 
     tr
       td.dt= han(@resource, :agreement_num)
@@ -54,19 +54,19 @@ table.table.dl-table.col-2
       td= @parent.vehicle_type_text
       td.sep
       td.dt= han(@parent, :checkin_date)
-      td= l @parent.checkin_date
+      td= @parent.checkin_date ? l(@parent.checkin_date) : 'Не определена'
     tr
       td.dt= han(@parent, :pallet_count)
       td= @parent.pallet_count
       td.sep
       td.dt= han(@parent, :checkout_date)
-      td= l @parent.checkout_date
+      td= @parent.checkout_date ? l(@parent.checkout_date) : 'Не определена'
     tr
       td.dt= han(@parent, :state)
       td= @parent.state_text
       td.sep
       td.dt= han(@parent, :date)
-      td= l @parent.date
+      td= @parent.date ? l(@parent.date) : 'Не определена'
 
 h3 Услуги
 = render partial: 'cabinet/shared/selling_items', locals: {clickable_row: false, collection: @selling_items}
