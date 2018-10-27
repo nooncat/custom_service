@@ -21,6 +21,19 @@
   line-height: 35px;
 }
 
+.dl-table td.dt {
+  text-align: right;
+  font-weight: bold
+}
+
+.dl-table.col-2 td {
+  width: 24%;
+}
+
+.dl-table td.sep {
+  width: 20px;
+}
+
 .nowrap {
   white-space: nowrap;
 }

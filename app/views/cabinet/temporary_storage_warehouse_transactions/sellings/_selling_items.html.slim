@@ -7,41 +7,5 @@
       span.pull-left
         | Услуги:
 
-- if collection.any?
-  table.table
-    thead
-      tr
-        th №
-        th= han(SellingItem, :description)
-        th= han(SellingItem, :quantity)
-        th= han(SellingItem, :measure)
-        th= han(SellingItem, :price)
-        th= han(SellingItem, :nds_percent)
-        th= han(SellingItem, :nds_total)
-        th= han(SellingItem, :total)
 
-    tbody
-      - collection.each_with_index do |e, i|
-        tr onClick="location.href='#{polymorphic_path [:edit, :cabinet, @resource, e]}'" style="cursor:pointer"
-          td = i + 1
-          td = e.description
-          td = e.quantity
-          td = e.measure
-          td.nowrap = number_to_currency e.price
-          td.nowrap = e.nds_percent
-          td.nowrap = number_to_currency e.nds_total
-          td.nowrap = number_to_currency e.total
-    tfooter
-      tr
-        td
-        td
-        td
-        td
-        td
-        td ИТОГО:
-        td= number_to_currency collection.sum(&:nds_total)
-        td= number_to_currency collection.sum(&:total)
-
-- else
-  br
-  .well Не создано ни одной услуги
+= render partial: 'cabinet/shared/selling_items', locals: {clickable_row: true, collection: collection}

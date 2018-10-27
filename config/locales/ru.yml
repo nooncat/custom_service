@@ -71,6 +71,7 @@ ru:
         email: Email
         phone: Телефон
       selling:
+        temporary_storage_warehouse_transaction: А/М
         company_name: Контрагент
         num: Номер счета
         agreement_num: Номер договора

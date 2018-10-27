@@ -1,0 +1,72 @@
+.row
+  .col-md-12
+    h2
+      = link_to 'Назад', [:cabinet, :sellings], class: 'btn btn-primary pull-left'
+      span.pull-right
+        | Реализация
+br
+
+table.table.dl-table.col-2
+  tbody
+    tr
+      td.dt= han(@resource, :company_name)
+      td= @resource.company_name
+      td.sep
+      td.dt= han(@resource, :date)
+      td= l @resource.date
+    tr
+      td.dt= han(@resource, :num)
+      td= @resource.num
+      td.sep
+      td.dt= han(@resource, :planned_payment_date)
+      td= l @resource.planned_payment_date
+
+    tr
+      td.dt= han(@resource, :agreement_num)
+      td= @resource.agreement_num
+      td.sep
+      td.dt= han(@resource, :payed)
+      td= @resource.payed ? 'Оплачено' : 'Не оплачено'
+
+h3 Данные о А/М
+table.table.dl-table.col-2
+  tbody
+    tr
+      td.dt= han(@parent, :vehicle_number)
+      td= @parent.vehicle_number
+      td.sep
+      td.dt= han(@parent, :user)
+      td= @parent.user.full_name
+    tr
+      td.dt= han(@parent, :driver_fullname)
+      td= @parent.driver_fullname
+      td.sep
+      td.dt= han(@parent, :deal_type)
+      td= @parent.deal_type_text
+    tr
+      td.dt= han(@parent, :phone)
+      td= @parent.phone
+      td.sep
+      td.dt= han(@parent, :country)
+      td= @parent.country
+    tr
+      td.dt= han(@parent, :vehicle_type)
+      td= @parent.vehicle_type_text
+      td.sep
+      td.dt= han(@parent, :checkin_date)
+      td= l @parent.checkin_date
+    tr
+      td.dt= han(@parent, :pallet_count)
+      td= @parent.pallet_count
+      td.sep
+      td.dt= han(@parent, :checkout_date)
+      td= l @parent.checkout_date
+    tr
+      td.dt= han(@parent, :state)
+      td= @parent.state_text
+      td.sep
+      td.dt= han(@parent, :date)
+      td= l @parent.date
+
+h3 Услуги
+= render partial: 'cabinet/shared/selling_items', locals: {clickable_row: false, collection: @selling_items}

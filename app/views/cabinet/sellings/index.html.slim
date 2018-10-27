@@ -1,0 +1,30 @@
+.row
+  .col-md-12
+    h2
+      span.pull-left
+        | Реализации
+hr
+table.table
+  thead
+    tr
+      th= han(Selling, :temporary_storage_warehouse_transaction)
+      th= sort_link @q, :company_name, han(Selling, :company_name)
+      th= sort_link @q, :num, han(Selling, :num)
+      th= sort_link @q, :agreement_num, han(Selling, :agreement_num)
+      th= sort_link @q, :date, han(Selling, :date)
+      th= sort_link @q, :planned_payment_date, han(Selling, :planned_payment_date)
+      th= sort_link @q, :payed, han(Selling, :payed)
+  tbody
+    - @collection.each do |e|
+      tr onClick="location.href='#{url_for([:cabinet, e])}'" style="cursor:pointer"
+        td= e.temporary_storage_warehouse_transaction
+        td= e.company_name
+        td= e.num
+        td= e.agreement_num
+        td= l e.date
+        td= l e.planned_payment_date
+        td
+          - if e.payed
+            i.fa.fa-check style="color: green"
+
+= paginate @collection, theme: 'twitter-bootstrap-4'
