@@ -9,4 +9,16 @@ class Cabinet::SellingsController < Cabinet::ApplicationController
     @parent = @resource.temporary_storage_warehouse_transaction
     @selling_items = @resource.selling_items
   end
+
+  def update
+    @resource = Selling.find params[:id]
+
+    if @resource.update(permitted_params)
+      redirect_to action: :show
+    end
+  end
+
+  def permitted_params
+    params.require(:selling).permit(:payed)
+  end
 end

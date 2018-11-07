@@ -58,7 +58,7 @@ class Cabinet::TemporaryStorageWarehouseTransactionsController < Cabinet::Applic
       params.require(:temporary_storage_warehouse_transaction).permit(
         :company_id, :vehicle_number, :vehicle_type, :state, :pallet_count,
         :checkin_date, :checkin_notifie, :checkout_date, :checkout_notifie, :phone, :deal_typ, :country_code,
-        :planned_payment_date
+        :planned_payment_date, :driver_fullname, :bill_sent_at
       )
     )
   end

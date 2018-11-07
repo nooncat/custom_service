@@ -2,6 +2,7 @@ ru:
   time:
     formats:
       default: "%d.%m.%Y %H:%M"
+      date_only: "%d.%m.%Y"
   activerecord:
     errors:
       models:
@@ -46,6 +47,7 @@ ru:
         country_code: Страна
         user: Ответственный сотрудник
         planned_payment_date: Планируемая дата оплаты
+        bill_sent_at: Счет выставлен от
       company:
         id: Номер
         name: Юр.лицо

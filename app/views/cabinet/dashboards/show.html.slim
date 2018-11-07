@@ -1,0 +1,49 @@
+.row
+  .col-md-12
+    h2
+      span.pull-left
+        | Статистика
+hr
+
+.row
+  .col-md-6
+    h2 Топ контрагентов с просроченой дебеторской задолжностью
+    table.table
+      thead
+        tr
+          th Наименование
+          th Задолжность
+      tboyd
+        - CompaniesStat.with_overdue_debt(top: 10).each do |row|
+          tr
+            td= row.name
+            td= number_to_currency row.overdue_debt
+  .col-md-6
+    h2 Топ контрагентов c дебеторской задолжностью
+    table.table
+      thead
+        tr
+          th Наименование
+          th Задолжность
+      tboyd
+        - CompaniesStat.with_debt(top: 10).each do |row|
+          tr
+            td= row.name
+            td= number_to_currency row.debt
+
+  .col-md-6
+    h2 Сумма услуг по контрагентам
+    table.table
+      thead
+        tr
+          th Наименование
+          th Сумма
+      tboyd
+        - CompaniesStat.with_debt(top: 10).each do |row|
+          tr
+            td= row.name
+            td= number_to_currency row.debt
+
+  .col-md-6
+    h2 Выручка в неделю
+    .well Выручки еще нет

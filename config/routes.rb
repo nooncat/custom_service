@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :sellings, only: [:index, :show] do
+    resources :sellings, only: [:index, :show, :update] do
       scope module: :sellings do
         resources :selling_items, only: [:new, :create, :edit, :update, :destroy]
         resource :invoice, only: [:create]
@@ -29,6 +29,8 @@ Rails.application.routes.draw do
         resources :company_contacts, only: [:new, :create, :edit, :update, :destroy]
       end
     end
+
+    resource :dashboard, only: [:show]
   end
 
   namespace :admin do

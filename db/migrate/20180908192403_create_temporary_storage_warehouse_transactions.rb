@@ -9,6 +9,7 @@ class CreateTemporaryStorageWarehouseTransactions < ActiveRecord::Migration[5.2]
       t.datetime :date
       t.datetime :checkin_date
       t.datetime :checkout_date
+      t.datetime :bill_sent_at
 
       t.boolean :checkin_notified
       t.boolean :checkout_notified

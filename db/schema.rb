@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 2018_10_18_053430) do
     t.datetime "date"
     t.datetime "checkin_date"
     t.datetime "checkout_date"
+    t.datetime "bill_sent_at"
     t.boolean "checkin_notified"
     t.boolean "checkout_notified"
     t.string "driver_fullname"

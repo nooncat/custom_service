@@ -98,7 +98,8 @@ letters = %w[A B C E O P T]
     phone: "+#{79001001010+i}",
     deal_type: TemporaryStorageWarehouseTransaction.deal_type.values.sample,
     country_code: TemporaryStorageWarehouseTransaction::AVAILABLE_COUNTRIES.sample,
-    user: users.sample
+    user: users.sample,
+    bill_sent_at: Time.zone.now - rand(1..50).days
   }
 }.each do |e|
   TemporaryStorageWarehouseTransaction.create!(e)

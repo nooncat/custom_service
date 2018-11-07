@@ -30,7 +30,7 @@ table.table
         td= resource&.company
         td= resource.vehicle_number
         td
-          - if [true, false].sample
+          - if resource.bill_sent_at
             i.fa.fa-check style="color: green"
         td
           - if resource.checkin_notified

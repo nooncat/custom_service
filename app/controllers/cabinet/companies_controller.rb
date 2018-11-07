@@ -53,7 +53,7 @@ class Cabinet::CompaniesController < Cabinet::ApplicationController
   def company_params
     params.require(:company).permit(:ogrn, :inn, :kpp, :uridicheskiy_address, :real_address,
       :bank_schet, :bank_name, :bank_bik, :bank_city, :bank_kor_schet, :phone, :email,
-      :users_id, :agreement_num, :name, :director
+      :users_id, :agreement_num, :name, :director, :discount, :deferment_of_payment
     )
   end
 end
