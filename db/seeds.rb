@@ -104,3 +104,29 @@ letters = %w[A B C E O P T]
 }.each do |e|
   TemporaryStorageWarehouseTransaction.create!(e)
 end
+
+Selling.delete_all
+
+include SellingItemsHelper
+
+TemporaryStorageWarehouseTransaction.all.each_with_index do |e, i|
+  date = Time.zone.now - rand(0..40).days
+  s = e.create_selling(
+    payed: [true, false].sample,
+    company_name: e.company.name,
+    num: i,
+    agreement_num: e.company.agreement_num,
+    date: date,
+    planned_payment_date: date + e.company.deferment_of_payment.to_i.days
+  )
+
+  tsw_services.sample(5).map do |service|
+    s.selling_items.create(
+      description: service[:description],
+      quantity: rand(1..10),
+      measure: service[:measure],
+      price: service[:price],
+      nds_percent: 18
+    )
+  end
+end

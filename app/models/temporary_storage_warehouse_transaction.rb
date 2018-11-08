@@ -24,7 +24,7 @@ class TemporaryStorageWarehouseTransaction < ApplicationRecord
   end
 
   def to_s
-    "#{id}, #{country}, #{vehicle_number}"
+    "#{id}: #{country_code.upcase}: #{vehicle_number}"
   end
 
   def arrival_notifications

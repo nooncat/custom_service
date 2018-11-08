@@ -21,10 +21,10 @@ table.table
     - @collection.each do |e|
       tr onClick="location.href='#{url_for([:cabinet, e])}'" style="cursor:pointer"
         td= e.num
-        td= e.date ? l(e.date) : 'Не определена'
+        td.nowrap= e.date ? l(e.date, format: :date_only) : 'Не определена'
         td= e.company_name
         td= e.temporary_storage_warehouse_transaction
-        td= number_to_currency e.selling_items.sum(&:total)
+        td.nowrap= number_to_currency e.selling_items.sum(&:total)
         td
           - if e.payed
             i.fa.fa-check style="color: green"

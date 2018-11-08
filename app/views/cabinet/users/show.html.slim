@@ -73,8 +73,7 @@
         tbody
           - tsw_services.each do |s|
             tr
-              td= '%.2f' % s[:price]
-              td руб.
-              td= s[:measure]
               td= s[:description]
+              td.nowrap= s[:measure]
+              td.nowrap= number_to_currency s[:price]
 

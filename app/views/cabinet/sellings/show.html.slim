@@ -30,9 +30,9 @@ table.table.dl-table.col-2
 
 .row
   .col-md-12
-    = link_to 'Сгенерировать счета', [:cabinet, @resource, :invoice], method: :post, class: 'btn btn-default pull-left mr-10'
-    / = link_to 'Печать счета', '#', class: 'btn btn-default pull-left mr-10'
-    / = link_to 'Печать реализация', '#', class: 'btn btn-default pull-left mr-10'
+    = link_to 'Печать комплектат документов', [:cabinet, @resource, :invoice_kit], method: :post, class: 'btn btn-default pull-left mr-10'
+    = link_to 'Печать счета', [:cabinet, @resource, :invoice], method: :post, class: 'btn btn-default pull-left mr-10'
+    = link_to 'Печать реализации', [:cabinet, @resource, :upd], method: :post, class: 'btn btn-default pull-left mr-10'
     - unless @resource.payed?
       = link_to 'Оплачено', [:cabinet, @resource, selling: {payed: 1}], method: :patch, class: 'btn btn-success pull-right'
 
