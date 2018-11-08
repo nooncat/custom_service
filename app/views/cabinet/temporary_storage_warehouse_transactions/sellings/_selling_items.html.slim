@@ -3,7 +3,7 @@
     h2
       = link_to 'Добавить услугу', [:new, :cabinet, @resource, :selling_item], class: 'btn btn-success pull-right ml-10'
       - if collection.any?
-        = link_to 'Печать комплекта документов', [:cabinet, @resource, :invoice], method: :post, class: 'btn btn-default pull-right mr-10'
+        = link_to 'Печать комплекта документов', [:cabinet, @resource, :invoice_kit], method: :post, class: 'btn btn-default pull-right mr-10'
         = link_to 'Печать счета', [:cabinet, @resource, :invoice], method: :post, class: 'btn btn-default pull-right mr-10'
         = link_to 'Печать реализации', [:cabinet, @resource, :upd], method: :post, class: 'btn btn-default pull-right mr-10'
       span.pull-left
