@@ -14,7 +14,7 @@ hr
           th Наименование
           th Задолжность
       tboyd
-        - CompaniesStat.with_overdue_debt(top: 10).each do |row|
+        - CompaniesStat.with_overdue_debt.each do |row|
           tr
             td= row.name
             td= number_to_currency row.overdue_debt
@@ -26,7 +26,7 @@ hr
           th Наименование
           th Задолжность
       tboyd
-        - CompaniesStat.with_debt(top: 10).each do |row|
+        - CompaniesStat.with_debt.each do |row|
           tr
             td= row.name
             td= number_to_currency row.debt
@@ -39,10 +39,10 @@ hr
           th Наименование
           th Сумма
       tboyd
-        - CompaniesStat.with_debt(top: 10).each do |row|
+        - CompaniesStat.with_total_income.each do |row|
           tr
             td= row.name
-            td= number_to_currency row.debt
+            td= number_to_currency row.income
 
   .col-md-6
     h2 Выручка в неделю

@@ -1,6 +1,8 @@
 class Company < ApplicationRecord
 
   has_many :company_contacts
+  has_many :temporary_storage_warehouse_transaction
+  has_many :sellings, through: :temporary_storage_warehouse_transaction
 
   validates :ogrn, format: {with: /\A\d{13}\Z/, message: 'имеет не верный формат, должно содержать 13 символов'}
   validates :inn, format: {with: /\A\d{10}\Z/, message: 'имеет не верный формат, должно содержать 10 символов'}

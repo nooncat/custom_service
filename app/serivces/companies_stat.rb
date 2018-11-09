@@ -1,25 +1,31 @@
 module CompaniesStat
   def self.with_overdue_debt(top: 10)
-    [
-      {name: "OAO РЖД", overdue_debt: 1000000},
-      {name: "ООО Носков и Ко", overdue_debt: 900000},
-      {name: "OAO Птицефабрика", overdue_debt: 880000},
-      {name: "ООО Рога и Копыта", overdue_debt: 100000},
-      {name: "OAO ГазВазГорСтрой", overdue_debt: 40000},
-      {name: "ООО Вагоностроительный завод №1", overdue_debt: 40000},
-      {name: "ЗАО Автодор транс", overdue_debt: 10000},
-    ].map{ |e| OpenStruct.new e }
+    companies_with_overdue_debt.map do |e|
+      OpenStruct.new({name: e.name, overdue_debt: e.sellings.sum(&:total).round(2)})
+    end.sort_by(&:overdue_debt).last(top).reverse
   end
 
   def self.with_debt(top: 10)
-    [
-      {name: "OAO РЖД", debt: 2000000},
-      {name: "ООО Носков и Ко", debt: 1800000},
-      {name: "OAO Птицефабрика", debt: 1680000},
-      {name: "ООО Рога и Копыта", debt: 200000},
-      {name: "OAO ГазВазГорСтрой", debt: 80000},
-      {name: "ООО Вагоностроительный завод №1", debt: 40000},
-      {name: "ЗАО Автодор транс", debt: 20000},
-    ].map{ |e| OpenStruct.new e }
+    companies_with_debt.map do |e|
+      OpenStruct.new({name: e.name, debt: e.sellings.sum(&:total).round(2)})
+    end.sort_by(&:debt).last(top).reverse
+  end
+
+  def self.with_total_income(top: 10)
+    companies.map do |e|
+      OpenStruct.new({name: e.name, income: e.sellings.sum(&:total).round(2)})
+    end.sort_by(&:income).last(top).reverse
+  end
+
+  def self.companies
+    Company.includes(sellings: :selling_items)
+  end
+
+  def self.companies_with_debt
+    companies.where(sellings: {payed: false})
+  end
+
+  def self.companies_with_overdue_debt
+    companies_with_debt.where('planned_payment_date < ?', Time.zone.now)
   end
 end
