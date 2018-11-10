@@ -8,6 +8,8 @@ hr
 .row
   .col-md-6
     h2 Топ контрагентов с просроченой дебеторской задолжностью
+    <canvas id="with_overdue_debt_chart" style="width: 100%; height: 400px"></canvas>
+
     table.table
       thead
         tr
@@ -18,8 +20,11 @@ hr
           tr
             td= row.name
             td= number_to_currency row.overdue_debt
+
   .col-md-6
     h2 Топ контрагентов c дебеторской задолжностью
+    <canvas id="with_debt_chart" style="width: 100%; height: 400px"></canvas>
+
     table.table
       thead
         tr
@@ -33,6 +38,8 @@ hr
 
   .col-md-6
     h2 Сумма услуг по контрагентам
+    <canvas id="with_total_income_chart" style="width: 100%; height: 400px"></canvas>
+
     table.table
       thead
         tr
@@ -45,5 +52,60 @@ hr
             td= number_to_currency row.income
 
   .col-md-6
-    h2 Выручка в неделю
-    .well Выручки еще нет
+    h2 Выручка по неделям
+    <canvas id="svh_week_income_chart" style="width: 100%; height: 400px"></canvas>
+
+    table.table
+      thead
+        tr
+          th Наименование
+          th Сумма
+      tboyd
+        - CompaniesStat.svh_income_by_weeks.each do |row|
+          tr
+            td= l(row.date, format: :date_only)
+            td= number_to_currency row.income
+
+javascript:
+
+  var initDoughnut = function(id, labels, data) {
+    return new Chart(
+      document.getElementById(id),
+      {
+        type: 'doughnut',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: labels,
+              data: data,
+              backgroundColor: palette('cb-Spectral', data.length).map(function(e){return '#' + e})
+            }
+          ]
+        }
+      }
+    )
+  }
+  var initBar = function(id, title, labels, data) {
+    return new Chart(
+      document.getElementById(id),
+      {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: title,
+              data: data
+            }
+          ]
+        }
+      }
+    )
+  }
+
+  var with_overdue_debt_chart = initDoughnut('with_overdue_debt_chart', #{raw CompaniesStat.with_overdue_debt.map(&:name)}, #{raw CompaniesStat.with_overdue_debt.map(&:overdue_debt)});
+  var with_overdue_debt_chart = initDoughnut('with_debt_chart', #{raw CompaniesStat.with_debt.map(&:name)}, #{raw CompaniesStat.with_debt.map(&:debt)});
+  var with_overdue_debt_chart = initDoughnut('with_total_income_chart', #{raw CompaniesStat.with_total_income.map(&:name)}, #{raw CompaniesStat.with_total_income.map(&:income)});
+  var with_overdue_debt_chart = initBar('svh_week_income_chart', 'Выручка по неделям', #{raw CompaniesStat.svh_income_by_weeks.map{|e| l(e.date, format: :date_only) }}, #{raw CompaniesStat.svh_income_by_weeks.map(&:income)});
+

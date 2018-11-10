@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2018_10_18_053430) do
     t.string "agreement_num"
     t.datetime "date"
     t.datetime "planned_payment_date"
-    t.boolean "payed"
+    t.datetime "payed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["temporary_storage_warehouse_id"], name: "index_sellings_on_temporary_storage_warehouse_id"

@@ -19,6 +19,6 @@ class Cabinet::SellingsController < Cabinet::ApplicationController
   end
 
   def permitted_params
-    params.require(:selling).permit(:payed)
+    params.require(:selling).permit(:payed_at)
   end
 end

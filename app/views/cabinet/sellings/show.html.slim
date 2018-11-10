@@ -25,16 +25,16 @@ table.table.dl-table.col-2
       td.dt= han(@resource, :agreement_num)
       td= @resource.agreement_num
       td.sep
-      td.dt= han(@resource, :payed)
-      td= @resource.payed ? 'Оплачено' : 'Не оплачено'
+      td.dt Оплачено
+      td= @resource.payed_at ? 'Оплачено' : 'Не оплачено'
 
 .row
   .col-md-12
     = link_to 'Печать комплектат документов', [:cabinet, @resource, :invoice_kit], method: :post, class: 'btn btn-default pull-left mr-10'
     = link_to 'Печать счета', [:cabinet, @resource, :invoice], method: :post, class: 'btn btn-default pull-left mr-10'
     = link_to 'Печать реализации', [:cabinet, @resource, :upd], method: :post, class: 'btn btn-default pull-left mr-10'
-    - unless @resource.payed?
-      = link_to 'Оплачено', [:cabinet, @resource, selling: {payed: 1}], method: :patch, class: 'btn btn-success pull-right'
+    - unless @resource.payed_at?
+      = link_to 'Оплачено', [:cabinet, @resource, selling: {payed_at: Time.zone.now}], method: :patch, class: 'btn btn-success pull-right'
 
 
 h3 Данные о А/М

@@ -9,7 +9,7 @@ class CreateSellings < ActiveRecord::Migration[5.2]
       t.string :agreement_num
       t.datetime :date
       t.datetime :planned_payment_date
-      t.boolean :payed
+      t.datetime :payed_at
 
       t.timestamps
     end

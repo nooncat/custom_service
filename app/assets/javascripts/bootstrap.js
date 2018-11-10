@@ -18,4 +18,9 @@ jQuery(function() {
     ;
     return YYYY + '-' + MM + '-' + DD + 'T' + HH + ':' + II + ':' + SS;
   };
+
+  $('[role="autoFillableDate"][type="datetime-local"]').on('click', function(e) {
+    var target = e.currentTarget;
+    if (target.value == '') { target.value = new Date().toDatetimeLocal() }
+  })
 });

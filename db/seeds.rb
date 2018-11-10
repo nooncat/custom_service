@@ -110,14 +110,17 @@ Selling.delete_all
 include SellingItemsHelper
 
 TemporaryStorageWarehouseTransaction.all.each_with_index do |e, i|
-  date = Time.zone.now - rand(0..40).days
+  date = Time.zone.now - rand(0..180).days
+
+  planned_payment_date = date + e.company.deferment_of_payment.to_i.days
+
   s = e.create_selling(
-    payed: [true, false].sample,
-    company_name: e.company.name,
     num: i,
-    agreement_num: e.company.agreement_num,
     date: date,
-    planned_payment_date: date + e.company.deferment_of_payment.to_i.days
+    payed_at: [nil, planned_payment_date].sample,
+    company_name: e.company.name,
+    agreement_num: e.company.agreement_num,
+    planned_payment_date: planned_payment_date
   )
 
   tsw_services.sample(5).map do |service|

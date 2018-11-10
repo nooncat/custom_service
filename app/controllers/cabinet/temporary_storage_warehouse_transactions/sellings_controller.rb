@@ -63,6 +63,6 @@ class Cabinet::TemporaryStorageWarehouseTransactions::SellingsController < Cabin
   def permitted_params
     {
       temporary_storage_warehouse_id: current_user.temporary_storage_warehouse.id
-    }.merge params.require(:selling).permit(:payed, :company_name, :num, :agreement_num, :date, :planned_payment_date)
+    }.merge params.require(:selling).permit(:payed_at, :company_name, :num, :agreement_num, :date, :planned_payment_date)
   end
 end

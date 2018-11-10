@@ -13,7 +13,7 @@
     .row
       .col-md-12
         = f.input :company_name
-        = f.input :payed
+        = f.input :payed_at, as: :datetime, html5: true, input_html: {role: 'autoFillableDate'}
 
   .row
     .col-md-12

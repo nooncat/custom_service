@@ -12,7 +12,7 @@ table.table
       th= sort_link @q, :company_name, han(Selling, :company_name)
       th= 'Номер ТС'
       th= 'Сумма'
-      th= sort_link @q, :payed, han(Selling, :payed)
+      th= sort_link @q, :payed_at, 'Оплачено'
       th= sort_link @q, :planned_payment_date, han(Selling, :planned_payment_date)
       th= 'Ответственный сотрудник'
       th= 'Предоставлены отчетные документы'
@@ -26,7 +26,7 @@ table.table
         td= e.temporary_storage_warehouse_transaction
         td.nowrap= number_to_currency e.selling_items.sum(&:total)
         td
-          - if e.payed
+          - if e.payed_at
             i.fa.fa-check style="color: green"
         td= e.planned_payment_date ? l(e.planned_payment_date, format: :date_only) : 'Не определена'
         td= e.temporary_storage_warehouse_transaction.user

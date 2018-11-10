@@ -1,4 +1,7 @@
 ru:
+  date:
+    formats:
+      date_only: "%d.%m.%Y"
   time:
     formats:
       default: "%d.%m.%Y %H:%M"
@@ -79,7 +82,7 @@ ru:
         agreement_num: Номер договора
         date: От
         planned_payment_date: Планируемая дата оплаты
-        payed: Оплачено
+        payed_at: Оплачено
       selling_item:
         description: Описание
         quantity: Количество
