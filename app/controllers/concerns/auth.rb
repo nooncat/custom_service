@@ -31,7 +31,6 @@ module Auth
   end
 
   def authorize
-    p "Authorizable:#{resource_class.to_s}".constantize
     true
   end
 end

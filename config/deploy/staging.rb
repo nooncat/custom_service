@@ -1,9 +1,17 @@
-server '92.53.91.47', user: 'deployer', roles: %w{app web db}
+server '87.236.23.47', user: 'deployer', roles: %w{app web db}
 set :deploy_to, '/home/deployer/customs_service/'
 set :user, 'deployer'
 set :port, 22
 set :rails_env, 'staging'
 set :branch, ENV['branch'] || 'master'
+set :rvm_ruby_version, '2.5.3'
+
+# server '92.53.91.47', user: 'deployer', roles: %w{app web db}
+# set :deploy_to, '/home/deployer/customs_service/'
+# set :user, 'deployer'
+# set :port, 22
+# set :rails_env, 'staging'
+# set :branch, ENV['branch'] || 'master'
 
 # server-based syntax
 # ======================
