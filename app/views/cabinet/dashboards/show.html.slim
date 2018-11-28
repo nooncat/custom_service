@@ -7,14 +7,14 @@ hr
 
 .row
   .col-md-6
-    h2 Топ контрагентов с просроченой дебеторской задолжностью
+    h2 Топ контрагентов с просроченой дебеторской задолженность
     <canvas id="with_overdue_debt_chart" style="width: 100%; height: 400px"></canvas>
 
     table.table
       thead
         tr
           th Наименование
-          th Задолжность
+          th Задолженность
       tboyd
         - CompaniesStat.with_overdue_debt.each do |row|
           tr
@@ -22,14 +22,14 @@ hr
             td= number_to_currency row.overdue_debt
 
   .col-md-6
-    h2 Топ контрагентов c дебеторской задолжностью
+    h2 Топ контрагентов c дебеторской задолженность
     <canvas id="with_debt_chart" style="width: 100%; height: 400px"></canvas>
 
     table.table
       thead
         tr
           th Наименование
-          th Задолжность
+          th Задолженность
       tboyd
         - CompaniesStat.with_debt.each do |row|
           tr

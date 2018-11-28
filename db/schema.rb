@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_18_053430) do
+ActiveRecord::Schema.define(version: 2018_11_28_174011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,13 @@ ActiveRecord::Schema.define(version: 2018_10_18_053430) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_company_contacts_on_company_id"
+  end
+
+  create_table "invoice_notifications", force: :cascade do |t|
+    t.bigint "selling_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["selling_id"], name: "index_invoice_notifications_on_selling_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -86,6 +93,7 @@ ActiveRecord::Schema.define(version: 2018_10_18_053430) do
     t.datetime "payed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "reporting_documents_provided_at"
     t.index ["temporary_storage_warehouse_id"], name: "index_sellings_on_temporary_storage_warehouse_id"
     t.index ["temporary_storage_warehouse_transaction_id"], name: "index_sellings_on_temporary_storage_warehouse_transaction_id"
   end

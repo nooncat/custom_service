@@ -22,6 +22,7 @@ Rails.application.routes.draw do
         resources :selling_items, only: [:new, :create, :edit, :update, :destroy]
         resource :invoice, only: [:create]
         resource :invoice_kit, only: [:create]
+        resources :invoice_notifications, only: [:create]
         resource :upd, only: [:create]
       end
     end

@@ -1,6 +1,7 @@
 class Selling < ApplicationRecord
   belongs_to :temporary_storage_warehouse_transaction
   has_many :selling_items
+  has_many :invoice_notifications
 
   def total_cost
     selling_items.sum{ |e| e.quantity * e.price }

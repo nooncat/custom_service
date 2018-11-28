@@ -20,13 +20,25 @@ table.table.dl-table.col-2
       td.sep
       td.dt= han(@resource, :planned_payment_date)
       td= @resource.planned_payment_date ? l(@resource.planned_payment_date) : 'Не определена'
-
     tr
       td.dt= han(@resource, :agreement_num)
       td= @resource.agreement_num
       td.sep
       td.dt Оплачено
       td= @resource.payed_at ? 'Оплачено' : 'Не оплачено'
+    tr
+      td.dt Счет для клиент отправлен
+      td
+        - if @resource.invoice_notifications.any?
+          ul
+            - @resource.invoice_notifications.each do |e|
+              li= l(e.created_at)
+        - else
+          | Нет ни одного уведомления
+        = link_to 'Создать уведомление', [:cabinet, @resource, :invoice_notifications], method: :post, class: 'btn btn-default pull-left mt-10'
+      td.sep
+      td
+      td
 
 .row
   .col-md-12
@@ -35,7 +47,8 @@ table.table.dl-table.col-2
     = link_to 'Печать реализации', [:cabinet, @resource, :upd], method: :post, class: 'btn btn-default pull-left mr-10'
     - unless @resource.payed_at?
       = link_to 'Оплачено', [:cabinet, @resource, selling: {payed_at: Time.zone.now}], method: :patch, class: 'btn btn-success pull-right'
-
+    - unless @resource.reporting_documents_provided_at?
+      = link_to 'Предоставлены отчетные документы', [:cabinet, @resource, selling: {reporting_documents_provided_at: Time.zone.now}], method: :patch, class: 'btn btn-success pull-right mr-10'
 
 h3 Данные о А/М
 table.table.dl-table.col-2

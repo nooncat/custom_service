@@ -25,12 +25,13 @@ table.table
         td= e.company_name
         td= e.temporary_storage_warehouse_transaction
         td.nowrap= number_to_currency e.selling_items.sum(&:total)
-        td
+        td.tl-c
           - if e.payed_at
             i.fa.fa-check style="color: green"
         td= e.planned_payment_date ? l(e.planned_payment_date, format: :date_only) : 'Не определена'
         td= e.temporary_storage_warehouse_transaction.user
-        td= ''
-
+        td.tl-c
+          - if e.reporting_documents_provided_at
+            i.fa.fa-check style="color: green"
 
 = paginate @collection, theme: 'twitter-bootstrap-4'

@@ -13,8 +13,8 @@ table.table
       th= sort_link @q, :company_name, 'Контрагент'
       th= sort_link @q, :vehicle_number, 'Гос Номер'
       th= 'Выставлен счет'
-      th= sort_link @q, :checkin_notified, 'Уведомлене заезда'
-      th= sort_link @q, :checkout_notified, 'Уведомлене выезда'
+      th= sort_link @q, :checkin_notified, 'Уведомлене о заезде'
+      th= sort_link @q, :checkout_notified, 'Уведомлене о выезде'
       th= sort_link @q, :deal_type, 'Вид сделки'
       th style="width: 170px;"= 'Страна'
       th style="width: 100px;"= sort_link @q, :vehicle_type, 'Тип ТС'
@@ -29,13 +29,13 @@ table.table
         td= resource.date ? l(resource.date) : 'не установлено'
         td= resource&.company
         td= resource.vehicle_number
-        td
+        td.tl-c
           - if resource.bill_sent_at
             i.fa.fa-check style="color: green"
-        td
+        td.tl-c
           - if resource.checkin_notified
             i.fa.fa-check style="color: green"
-        td
+        td.tl-c
           - if resource.checkout_notified
             i.fa.fa-check style="color: green"
         td= resource.deal_type_text
