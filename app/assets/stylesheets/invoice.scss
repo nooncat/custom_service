@@ -1,0 +1,142 @@
+* {
+  font-family: Arial, sans-serif;
+}
+
+.big_font {
+  font-size: 12pt;
+}
+
+.normal_font {
+  font-size: 8.64pt;
+}
+
+.medium_font {
+  font-size: 8.4pt;
+}
+
+.small_font {
+  font-size: 7.08pt;
+}
+
+.mini_font {
+  font-size: 6.84pt;
+}
+
+.micro_font {
+  font-size: 6pt;
+}
+
+.bold_font {
+  font-weight: bold;
+}
+
+.table_title {
+  text-align: center;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+.no_border {
+  border: none;
+}
+
+.no_top_border {
+  border-top: none;
+}
+
+.align_right {
+  text-align: right;
+}
+
+.align_center {
+  text-align: center;
+}
+
+.align_top {
+  vertical-align: top;
+}
+
+.align_bottom {
+  vertical-align: bottom;
+}
+
+.no_bottom_border {
+  border-bottom: none;
+}
+
+.invoice {
+  padding: 25px;
+}
+
+.header {
+  margin-top: 20px;
+  margin-left: 5px;
+
+  font-weight: bold;
+}
+
+hr {
+  height: 0;
+  border: 0;
+  border-top: 2px solid black;
+}
+
+.supplier_buyer_table {
+  border: none;
+
+  tr.space_under > td {
+    padding-bottom: 10px;
+  }
+
+  td {
+    border: none;
+  }
+}
+
+.selling_items_table {
+  margin-top: 10px;
+  border: 2px solid black;
+}
+
+.total_price_table {
+  margin-top: 3px;
+  border: none;
+
+  td {
+    border: none;
+  }
+}
+
+.signs_table {
+  margin: 25px 0 0 -25px;
+  width: 85%;
+
+  border: none;
+  border-collapse: separate;
+  border-spacing: 30px 0;
+
+  td {
+    height: 20px;
+  }
+
+  td {
+    border: none;
+  }
+
+  td.with_bottom_border {
+    border-bottom: 1px solid black;
+  }
+
+  tr.space_left > td {
+    padding-left: 10px;
+  }
+}
+

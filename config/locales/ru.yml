@@ -6,6 +6,7 @@ ru:
     formats:
       default: "%d.%m.%Y %H:%M"
       date_only: "%d.%m.%Y"
+      date_only_invoice: "%d %B %Y г."
   activerecord:
     errors:
       models:

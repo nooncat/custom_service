@@ -66,6 +66,9 @@ gem 'execjs'
 gem 'jquery-rails'
 gem 'pg_search'
 gem 'will_paginate', '~> 3.1.0'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+gem 'ru_propisju'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

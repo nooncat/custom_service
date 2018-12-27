@@ -1,0 +1,140 @@
+html
+  head
+    = wicked_pdf_stylesheet_link_tag 'invoice'
+    meta charset='utf-8'
+
+  body
+    - time = Time.now
+
+    div.invoice
+      div.table_title.normal_font
+        span Образец заполнения платежного поручения
+      table.payment_example_table.normal_font
+        tr
+          td.no_border colspan='2' style='width: 46%;' ТОЧКА ПАО БАНКА "ФК ОТКРЫТИЕ" Г. МОСКВА
+          td style='width: 8%;' БИК
+          td.no_border colspan='3' 044525999
+        tr
+          td.no_border colspan='2'
+          td.no_bottom_border Сч. №
+          td.no_border colspan='3' 30101810845250000999
+        tr
+          td.no_border colspan='2' Банк получателя платежа
+          td.no_top_border
+          td.no_border colspan='3'
+        tr
+          td ИНН 7328092118
+          td КПП 732801001
+          td Сч. №
+          td colspan='3' 40702810402500003010
+        tr
+          td.no_bottom_border colspan='2' Вавс ООО
+          td.small_font Вид оп.
+          td.no_bottom_border.medium_font 01
+          td.small_font style='width: 1%;' Срок плат.
+          td.no_bottom_border
+        tr
+          td.no_border colspan='2'
+          td.small_font Наз. пл.
+          td.no_border
+          td.small_font Очер.плат.
+          td.no_border.medium_font 5
+        tr
+          td.no_border colspan='2'
+          td.small_font rowspan='2' Код
+          td.no_border.micro_font style='width: 1%;' HK1808CBX0
+          td.small_font rowspan='2' Рез. поле
+          td.no_border rowspan='2'
+        tr
+          td.no_border.mini_font colspan='2' Получатель
+          td.no_top_border.micro_font 0000281002
+        tr
+          td.no_bottom_border colspan='6' height='30'
+            | Оплата по реализации товаров и услуг №#{selling.num}
+        tr
+          td.no_top_border.mini_font colspan='6' назначение платежа
+
+      div.header.big_font Счет на оплату №#{selling.num} от #{l(time, format: :date_only_invoice)}
+
+      hr
+
+      table.supplier_buyer_table.medium_font
+        tr.space_under
+          td Поставщик:
+          td.bold_font Вавс ООО, ИНН 7328092118, КПП 732801001, 432072, Ульяновская обл, Ульяновск г, Инженерный 1-й проезд, дом № 17, тел.: +7 (8422) 75-11-55
+        tr
+          td Покупатель:
+          td.bold_font = buyer_requisites(selling)
+
+      table.selling_items_table
+        tr.normal_font
+          th style='width: 5%;' №
+          th style='width: 42%;' Товары (работы, услуги)
+          th style='width: 13%;' colspan='2' Количество
+          th style='width: 10%;' Цена
+          th style='width: 10%;' Сумма без скидки
+          th style='width: 10%;' Скидка
+          th style='width: 10%;' Сумма
+        - selling.selling_items.each_with_index do |item, index|
+          tr.mini_font
+            td.align_right.align_bottom = index + 1
+            td = item.description
+            td.align_right.align_bottom style='width: 7%;' = item.quantity
+            td.align_right.align_bottom = item.measure
+            td.align_right.align_bottom = format_price(item.price)
+            td.align_right.align_bottom = format_price(item_total_price(item))
+            / not found discount
+            td.align_right.align_bottom
+            td.align_right.align_bottom = format_price(item_total_price_with_discount(item))
+
+      table.total_price_table.normal_font
+        tr.bold_font
+          td.align_right style='width: 70%;' Итого:
+          td.align_right style='width: 10%;' = format_price(selling.total_cost)
+          td.align_right style='width: 10%;'
+          td.align_right style='width: 10%;' = format_price(selling.total_cost)
+        tr.bold_font
+          td.align_right colspan='3' НДС(18%):
+          td.align_right = format_price(selling.nds_total)
+        tr.bold_font
+          td.align_right colspan='3' Итого с НДС:
+          td.align_right = format_price(selling.total)
+        tr
+          td colspan='4'
+            | Всего наименований #{selling.selling_items.size},
+            |  на сумму #{format_price(selling.total)} RUB
+        tr.bold_font
+          td colspan='4' = RuPropisju.rublej(selling.total).capitalize
+
+      hr
+      div.normal_font За транспортное средство #{vehicle(selling)} #{l(time, format: :date_only)}
+      hr
+
+      table.signs_table.normal_font
+        tr.bold_font.align_bottom
+          td style='width: 18%;' Руководитель
+          td.with_bottom_border style='width: 41%;'
+          td.with_bottom_border.align_center style='width: 41%;' Нестеров Н.Н.
+        tr.small_font.align_top
+          td
+          td.align_center подпись
+          td.align_center расшифровка подписи
+        tr.bold_font.align_bottom
+          td Бухгалтер
+          td.with_bottom_border
+          td.with_bottom_border.align_center.space_left Нестеров Н.Н.
+        tr.small_font.align_top
+          td
+          td.align_center подпись
+          td.align_center расшифровка подписи
+        tr.bold_font.align_bottom
+          td Менеджер
+          td.with_bottom_border
+          td.with_bottom_border.align_center Довгорученко А.А.
+        tr.small_font.align_top
+          td
+          td.align_center подпись
+          td.align_center расшифровка подписи
+
+
+
