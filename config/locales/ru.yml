@@ -97,3 +97,9 @@ ru:
         body: Сообщение
     messages:
       confirmation: "Подтверждени не совпадает с оригиналом"
+  cabinet:
+    search:
+      index:
+        selling: Реализация
+        company: Компания
+

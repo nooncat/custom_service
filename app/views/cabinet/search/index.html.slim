@@ -1,0 +1,25 @@
+.row
+  .col-md-12
+    h2
+      span.pull-left
+        | Поиск
+hr
+
+= form_tag(cabinet_search_path, method: :get, class: 'form-inline') do
+  = text_field_tag(:search_query, params[:search_query], class: 'form-control')
+  = submit_tag('Искать', class: 'btn btn-primary')
+
+- if @search_results
+  br
+  - @search_results.each do |result|
+    - type = result.searchable_type
+
+    .card
+      .card-body
+        h4 = link_to(result_title(result), result_link(result))
+        p
+          div = result.content.html_safe
+          small = t(".#{type.downcase}")
+        br
+
+  = paginate @search_results, theme: 'twitter-bootstrap-4'
