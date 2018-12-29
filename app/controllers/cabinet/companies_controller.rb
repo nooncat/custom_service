@@ -6,6 +6,9 @@ class Cabinet::CompaniesController < Cabinet::ApplicationController
     @collection = @q.result.page(params[:page])
   end
 
+  def show
+  end
+
   def new
     @resource = Company.new
   end

@@ -98,8 +98,8 @@ ru:
     messages:
       confirmation: "Подтверждени не совпадает с оригиналом"
   cabinet:
-    search:
-      index:
+    searches:
+      find:
         selling: Реализация
         company: Компания
 

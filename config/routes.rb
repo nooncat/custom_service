@@ -35,7 +35,11 @@ Rails.application.routes.draw do
 
     resource :dashboard, only: [:show]
 
-    get 'search' => 'search#index'
+    resource :search, only: [] do
+      collection do
+        get :find
+      end
+    end
   end
 
   namespace :admin do
