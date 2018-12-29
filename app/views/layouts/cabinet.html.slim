@@ -36,7 +36,7 @@ html lang="ru"
             li= link_to "Зона таможенного контроля", cabinet_temporary_storage_warehouse_transactions_path
             li= link_to "Реализации", [:cabinet, :sellings]
             li= link_to "Статистика", [:cabinet, :dashboard]
-            li= link_to "Поиск", find_cabinet_search_path
+            li= link_to "Поиск", cabinet_search_index_path
             / li= link_to "Статистика", "#", onClick: "alert('В процессе реализации'); return false"
           ul.nav.navbar-nav.navbar-right
             li= link_to 'Выход', session_path, method: :delete

@@ -35,11 +35,7 @@ Rails.application.routes.draw do
 
     resource :dashboard, only: [:show]
 
-    resource :search, only: [] do
-      collection do
-        get :find
-      end
-    end
+    resources :search, only: [:index]
   end
 
   namespace :admin do
