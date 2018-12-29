@@ -342,6 +342,7 @@ DEPENDENCIES
   execjs
   figaro
   gon
+  jquery-rails
   kaminari
   letter_opener
   listen (>= 3.0.5, < 3.2)
@@ -363,4 +364,4 @@ RUBY VERSION
    ruby 2.5.0p0
 
 BUNDLED WITH
-   1.16.6
+   1.17.1
