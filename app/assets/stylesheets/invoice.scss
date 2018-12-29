@@ -44,6 +44,14 @@ table, th, td {
   border: 1px solid black;
 }
 
+thead {
+  display: table-header-group;
+}
+
+thead, tr {
+  page-break-inside: avoid;
+}
+
 .no_border {
   border: none;
 }
@@ -70,10 +78,6 @@ table, th, td {
 
 .no_bottom_border {
   border-bottom: none;
-}
-
-.invoice {
-  padding: 25px;
 }
 
 .header {
